@@ -22,6 +22,154 @@
     </modules>
 
     <properties>
+        <!-- Project Build -->
+        <ndp.version>1.0.0-SNAPSHOT</ndp.version>
+        <java.version>1.7</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <gradle.version>2.3</gradle.version>
+        <cdi.version>1.2</cdi.version>
+        <!-- Dynamic Language Support -->
+        <groovy.version>2.4.3</groovy.version>
+        <scala.version>2.10.5</scala.version>
+        <streamsupport>1.2.1</streamsupport><!-- java 8 -->
+        <!-- AOP Support -->
+        <aspectj.version>1.8.5</aspectj.version>
+        <cglib.version>3.1</cglib.version>
+        <javassist.version>3.18.2-GA</javassist.version>
+        <!-- Utilities Start -->
+        <!-- Apache -->
+        <commons-beanutils.version>1.9.2</commons-beanutils.version>
+        <commons-chain.version>1.2</commons-chain.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <commons-collections.version>3.2.1</commons-collections.version>
+        <commons-collections4.version>4.0</commons-collections4.version>
+        <commons-compress.version>1.9</commons-compress.version>
+        <commons-configuration.version>1.10</commons-configuration.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-pool.version>1.6</commons-pool.version>
+        <commons-pool2.version>2.3</commons-pool2.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-math3.version>3.3</commons-math3.version>
+        <commons-net.version>3.3</commons-net.version>
+        <commons-vfs2.version>2.0</commons-vfs2.version>
+        <!-- Google -->
+        <google.guava.version>18.0</google.guava.version>
+        <google.guice.version>4.0</google.guice.version>
+        <!-- Spring Projects -->
+        <spring.version>4.1.6.RELEASE</spring.version>
+        <spring.batch.version>3.0.3.RELEASE</spring.batch.version>
+        <spring.boot.version>1.2.3.RELEASE</spring.boot.version>
+        <spring.integration.version>4.1.2.RELEASE</spring.integration.version>
+        <spring.data.version>1.10.0.RELEASE</spring.data.version>
+        <spring.data.hadoop.version>2.1.2.RELEASE</spring.data.hadoop.version>
+        <spring.data.jpa.version>1.8.0.RELEASE</spring.data.jpa.version>
+        <spring.data.mongodb.version>1.7.0.RELEASE</spring.data.mongodb.version>
+        <spring.data.neo4j.version>3.3.0.RELEASE</spring.data.neo4j.version>
+        <spring.data.redis.version>1.5.0.RELEASE</spring.data.redis.version>
+        <spring.data.rest.version>2.3.0.RELEASE</spring.data.rest.version>
+        <spring.data.solr.version>1.4.0.RELEASE</spring.data.solr.version>
+        <spring.data.elasticsearch.version>1.2.0.RELEASE</spring.data.elasticsearch.version>
+        <spring.security.version>4.0.1.RELEASE</spring.security.version>
+        <!-- Utilities End-->
+        <!-- Database Start -->
+        <!-- JCR -->
+        <jcr.version>2.0</jcr.version>
+        <jackrabbit.version>2.10.0</jackrabbit.version>
+        <oak.version>1.2.2</oak.version>
+        <modeshape.version>4.2.0.Final</modeshape.version>
+        <!-- RDF -->
+        <semweb4j.version>5.0.1</semweb4j.version>
+        <jena.version>2.13.0</jena.version>
+        <sesame.version>2.8.3</sesame.version>
+        <!-- Database Tools -->
+        <querydsl.version>3.6.3</querydsl.version>
+        <jooq.version>3.6.0</jooq.version>
+        <joox.version>1.3.0</joox.version>
+        <joor.version>0.9.5</joor.version>
+        <javax.validation.version>1.1.0.Final</javax.validation.version>
+        <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
+        <hibernate.version>4.3.8.Final</hibernate.version>
+        <hibernate-jpa20.version>1.0.1.Final</hibernate-jpa20.version>
+        <hibernate-jpa21.version>1.0.0.Final</hibernate-jpa21.version>
+        <HikariCP.version>2.3.5</HikariCP.version>
+        <cqengine.version>2.0.0</cqengine.version>
+        <!-- RDBMS/JDBC -->
+        <derby.version>10.11.1.1</derby.version>
+        <hsqldb.version>2.3.2</hsqldb.version>
+        <h2.version>1.4.186</h2.version>
+        <sqlite3.version>3.8.7</sqlite3.version>
+        <mysql.java.version>5.1.35</mysql.java.version>
+        <!-- Graph/Neo4j -->
+        <neo4j.version>2.1.8</neo4j.version><!--<neo4j.version>2.2.1</neo4j.version>--><!-- Spring Data Neo4j Rest 对2.2支持存在bug -->
+        <neo4j.spatial.version>0.13-neo4j-2.1.8</neo4j.spatial.version>
+        <neo4j.cypher-dsl.version>2.0.1</neo4j.cypher-dsl.version>
+        <tinkerpop.blueprints.version>2.6.0</tinkerpop.blueprints.version>
+        <tinkerpop3.version>3.0.0.M8-incubating</tinkerpop3.version>
+        <!-- Document/Mongo -->
+        <mongo.java.version>3.0.0</mongo.java.version>
+        <gmongo.version>1.5</gmongo.version>
+        <jongo.version>1.1</jongo.version>
+        <orientdb.verison>2.0.6</orientdb.verison>
+        <!-- KV/Redis -->
+        <jedis.version>2.7.0</jedis.version>
+        <leveldbjni.version>1.8</leveldbjni.version>
+        <!-- Cache -->
+        <hazelcast.version>3.4.1</hazelcast.version>
+        <ehcache.version>2.10.0</ehcache.version>
+        <infinispan.veresion>7.2.1.Final</infinispan.veresion>
+        <!-- Search Engine-->
+        <lucene.version>4.10.4</lucene.version>
+        <solr.version>4.10.4</solr.version>
+        <elasticsearch.version>1.4.4</elasticsearch.version>
+        <!-- Embed -->
+        <flapdoodle.process.version>1.41.1</flapdoodle.process.version>
+        <flapdoodle.mongo.version>1.47.2</flapdoodle.mongo.version>
+        <flapdoodle.memcached.version>1.11.2</flapdoodle.memcached.version>
+        <flapdoodle.nodejs.version>1.28</flapdoodle.nodejs.version>
+        <flapdoodle.redis.version>1.11.2</flapdoodle.redis.version>
+        <jirutka.embedmongo>1.3.1</jirutka.embedmongo>
+        <!-- Database End -->
+        <!-- Data Format/Parser Start -->
+        <!-- XML -->
+        <jackson.version>2.5.2</jackson.version>
+        <woodstox.version>4.4.1</woodstox.version>
+        <xalan.version>2.7.2</xalan.version>
+        <staxmate.version>2.2.1</staxmate.version>
+        <staxon.verison>1.3</staxon.verison>
+        <saxon.version>9.6.0-5</saxon.version>
+        <jcabi.xml.version>0.16.1</jcabi.xml.version>
+        <!-- HTML -->
+        <jsoup.version>1.8.2</jsoup.version>
+        <nekohtml>1.9.22</nekohtml>
+        <xsoup.version>0.3.0</xsoup.version>
+        <css-selectors.version>2.0</css-selectors.version>
+        <!-- JSON -->
+        <org.json.version>20141113</org.json.version>
+        <fastjson.version>1.2.5</fastjson.version>
+        <gson.version>2.3.1</gson.version>
+        <!-- Format -->
+        <joda.version>2.7</joda.version>
+        <!-- Parser -->
+        <tika.version>1.7</tika.version>
+        <pdfbox.version>1.8.9</pdfbox.version>
+        <poi.version>3.11</poi.version>
+        <!-- Data Format/Parser End -->
+        <!-- Data Mining -->
+        <mahout.version>0.10.0</mahout.version>
+        <opennlp.version>1.5.3</opennlp.version>
+        <weka.version>3.6.12</weka.version>
+        <!-- Web Container -->
+        <tomcat.version>8.0.20</tomcat.version>
+        <!-- Security -->
+        <shiro.version>1.2.3</shiro.version>
+        <!-- Test -->
+        <slf4j.version>1.7.10</slf4j.version>
+        <logback.version>1.1.2</logback.version>
+        <junit.version>4.12</junit.version>
+        <testng.version>6.8.13</testng.version>
+        <rest.assured.version>2.4.0</rest.assured.version>
     </properties>
 
     <dependencyManagement>

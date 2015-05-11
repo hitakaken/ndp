@@ -12,5 +12,11 @@
     <artifactId>ndp-kernel</artifactId>
     <name>NovBank Data Platform :: Kernel API</name>
     <description>NovBank Data Platform API, containing types and constants for working with NovBank Data Platform</description>
-    
+
+    <dependencyManagement>
+
+    </dependencyManagement>
+    <dependencies>
+
+    </dependencies>
 </project>
