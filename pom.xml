@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.novbank</groupId>
+    <artifactId>ndp</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>NovBank Data Platform</name>
+    <description>Parent project for NovBank Data Platform</description>
+    <organization>
+        <name>NovBank, Inc.</name>
+        <url>http://www.novbank.com</url>
+    </organization>
+    <inceptionYear>2015</inceptionYear>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>ndp-boms</module>
+        <module>ndp-kernel</module>
+        <module>ndp-kernel-impl</module>
+    </modules>
+
+    <properties>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <comments>Copyright (c) 2015 NovBank</comments>
+        </license>
+    </licenses>
+</project>

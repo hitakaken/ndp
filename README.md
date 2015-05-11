@@ -1,2 +1,2 @@
 # ndp
-Novbank Data  Platform
+NovBank Data  Platform
