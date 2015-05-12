@@ -7,10 +7,10 @@ import com.novbank.ndp.kernel.concept.RDFVocabulary;
 /**
  * Created by hp on 2015/5/12.
  */
-public class DCTerms extends RDFVocabulary {
+public class DCTerm extends RDFVocabulary {
     public static final String NAMESPACE = "http://purl.org/dc/terms/";
     public static final String PREFIX = "dcterms";
-    public static final DCTerms INSTANCE = new DCTerms();
+    public static final DCTerm INSTANCE = new DCTerm();
 
     public final RDFProperty _abstract;
     public final RDFProperty accessRights;
@@ -98,7 +98,7 @@ public class DCTerms extends RDFVocabulary {
     public final RDFResource URI;
     public final RDFResource W3CDTF;
     
-    public DCTerms() {
+    public DCTerm() {
         super(NAMESPACE, PREFIX);
         //Property
         _abstract = addProperty("abstract");
