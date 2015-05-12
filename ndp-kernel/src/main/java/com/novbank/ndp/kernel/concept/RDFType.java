@@ -7,7 +7,7 @@ import org.openrdf.model.URI;
  * RDF 资源节点
  * Jena/Sesame Composite Backend
  *
- * Created by hp on 2015/5/12.
+ * Created by CaoKe on 2015/5/12.
  */
 public interface RDFType<T extends Resource> {
     boolean isProperty();

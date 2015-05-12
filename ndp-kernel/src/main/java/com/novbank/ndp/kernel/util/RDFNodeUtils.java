@@ -9,8 +9,10 @@ import org.openrdf.model.URI;
 import org.openrdf.model.ValueFactory;
 import org.openrdf.model.impl.ValueFactoryImpl;
 
+import java.util.Map;
+
 /**
- * Created by hp on 2015/5/12.
+ * Created by CaoKe on 2015/5/12.
  */
 public class RDFNodeUtils {
     private static ValueFactory factory = ValueFactoryImpl.getInstance();
@@ -48,6 +50,11 @@ public class RDFNodeUtils {
     }
 
     public static URI createURI(String namespace,String localName){
-        return factory.createURI(namespace,localName);
+        return factory.createURI(namespace, localName);
+    }
+
+    public static String abbreviation(RDFResource resource, Map<String,String> namespaces){
+        return namespaces.containsKey(resource.getNameSpace())?
+                namespaces.get(resource.getNameSpace()) + ":" + resource.getLocalName() : resource.toString();
     }
 }

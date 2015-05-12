@@ -4,7 +4,7 @@ import com.hp.hpl.jena.rdf.model.Property;
 import org.openrdf.model.URI;
 
 /**
- * Created by hp on 2015/5/12.
+ * Created by CaoKe on 2015/5/12.
  */
 public class RDFProperty extends RDFResource<Property>{
     public RDFProperty(Property resource, URI uri, String nameSpace, String localName) {

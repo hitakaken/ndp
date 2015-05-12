@@ -5,7 +5,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import org.openrdf.model.URI;
 
 /**
- * Created by hp on 2015/5/12.
+ * Created by CaoKe on 2015/5/12.
  */
 public class RDFResource<T extends Resource> implements RDFType<T> {
     protected final T resource;

@@ -4,7 +4,7 @@ import com.novbank.ndp.kernel.concept.RDFResource;
 import com.novbank.ndp.kernel.concept.RDFVocabulary;
 
 /**
- * Created by hp on 2015/5/12.
+ * Created by CaoKe on 2015/5/12.
  */
 public class DCTypes extends RDFVocabulary {
     public static final String NAMESPACE = "http://purl.org/dc/dcmitype/";

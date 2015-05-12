@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by hp on 2015/5/12.
+ * Created by CaoKe on 2015/5/12.
  */
 public class DC extends RDFVocabulary{
     public static final String NAMESPACE = "http://purl.org/dc/elements/1.1/";

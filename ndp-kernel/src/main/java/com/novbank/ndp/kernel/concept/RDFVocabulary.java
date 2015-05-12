@@ -6,7 +6,7 @@ import com.novbank.ndp.kernel.util.RDFNodeUtils;
 import java.util.*;
 
 /**
- * Created by hp on 2015/5/12.
+ * Created by CaoKe on 2015/5/12.
  */
 public class RDFVocabulary {
     public String namespace;

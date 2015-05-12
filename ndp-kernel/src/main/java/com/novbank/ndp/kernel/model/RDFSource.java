@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.model;
 
 /**
- * Created by hp on 2015/5/12.
+ * Created by CaoKe on 2015/5/12.
  */
 public interface RDFSource {
 }
