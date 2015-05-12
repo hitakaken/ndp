@@ -4,19 +4,64 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.novbank</groupId>
+        <groupId>com.novbank.ndp</groupId>
         <artifactId>ndp</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>ndp-kernel</artifactId>
-    <name>NovBank Data Platform :: Kernel API</name>
+    <name>NovBank Data Platform :: Kernel :: API</name>
     <description>NovBank Data Platform API, containing types and constants for working with NovBank Data Platform</description>
 
     <dependencyManagement>
-
+        <dependencies>
+            <dependency>
+                <groupId>com.novbank.ndp</groupId>
+                <artifactId>ndp-commons-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.novbank.ndp</groupId>
+                <artifactId>ndp-jcr-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.novbank.ndp</groupId>
+                <artifactId>ndp-ldp-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- Commons -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <!-- JCR -->
+        <dependency>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
+        </dependency>
+
+        <!-- RDF -->
+        <!-- Jena -->
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-core</artifactId>
+        </dependency>
+        <!-- Sesame -->
+        <dependency>
+            <groupId>org.openrdf.sesame</groupId>
+            <artifactId>sesame-model</artifactId>
+        </dependency>
 
     </dependencies>
 </project>

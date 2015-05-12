@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.novbank.ndp</groupId>
+        <artifactId>ndp</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>ndp-jcr-bom</artifactId>
+    <name>NovBank Data Platform :: BOM :: JCR</name>
+    <description>A BOM for JCR dependencies needed by the NovBank Data Platform project.</description>
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- JSR 283 API -->
+            <dependency>
+                <groupId>javax.jcr</groupId>
+                <artifactId>jcr</artifactId>
+                <version>${jcr.version}</version>
+            </dependency>
+
+            <!-- Jackrabbit -->
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-core</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-api</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-spi</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-spi-commons</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-jcr-commons</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-jcr-rmi</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-jcr-webdav</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-webdav</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-jca</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-data</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-jcr2dav</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-jcr2spi</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-spi2jcr</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>jackrabbit-spi2dav</artifactId>
+                <version>${jackrabbit.version}</version>
+            </dependency>
+
+            <!-- Jackrabbit Oak -->
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>oak-core</artifactId>
+                <version>${oak.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>oak-mk</artifactId>
+                <version>${oak.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>oak-commons</artifactId>
+                <version>${oak.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>oak-jcr</artifactId>
+                <version>${oak.version}</version>
+            </dependency>
+
+            <!-- ModeShape -->
+            <dependency>
+                <groupId>org.modeshape</groupId>
+                <artifactId>modeshape-jcr</artifactId>
+                <version>${modeshape.version}</version>
+                <scope>provided</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.gagravarr</groupId>
+                        <artifactId>vorbis-java-tika</artifactId>
+                    </exclusion>
+                    <!-- tika-parsers transitively depends on commons-codec-1.5 but httpclient is pulling in 1.6, so we explicitly
+                      exclude commons-codec here and add commons-codec-1.6 as a dependency below -->
+                    <exclusion>
+                        <groupId>commons-codec</groupId>
+                        <artifactId>commons-codec</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.xerial.snappy</groupId>
+                        <artifactId>snappy-java</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xerces</groupId>
+                        <artifactId>xercesImpl</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+</project>

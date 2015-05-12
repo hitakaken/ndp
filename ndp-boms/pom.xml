@@ -4,9 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.novbank</groupId>
+        <groupId>com.novbank.ndp</groupId>
         <artifactId>ndp</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>ndp-boms</artifactId>
@@ -15,8 +16,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <!--<module>ndp-bom</module>
+        <module>ndp-bom</module>
+        <module>ndp-commons-bom</module>
+        <module>ndp-jcr-bom</module>
         <module>ndp-ldp-bom</module>
-        <module>ndp-jcr-bom</module>-->
     </modules>
 </project>

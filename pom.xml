@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.novbank</groupId>
+    <groupId>com.novbank.ndp</groupId>
     <artifactId>ndp</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>NovBank Data Platform</name>
@@ -38,7 +38,7 @@
         <cglib.version>3.1</cglib.version>
         <javassist.version>3.18.2-GA</javassist.version>
         <!-- Utilities Start -->
-        <!-- Apache -->
+        <!-- Apache Commons -->
         <commons-beanutils.version>1.9.2</commons-beanutils.version>
         <commons-chain.version>1.2</commons-chain.version>
         <commons-codec.version>1.10</commons-codec.version>
@@ -82,6 +82,7 @@
         <!-- RDF -->
         <semweb4j.version>5.0.1</semweb4j.version>
         <jena.version>2.13.0</jena.version>
+        <jena.ext.version>1.1.2</jena.ext.version>
         <sesame.version>2.8.3</sesame.version>
         <!-- Database Tools -->
         <querydsl.version>3.6.3</querydsl.version>
@@ -155,6 +156,8 @@
         <tika.version>1.7</tika.version>
         <pdfbox.version>1.8.9</pdfbox.version>
         <poi.version>3.11</poi.version>
+        <!-- Serialize/Compress -->
+        <snappy.version>1.1.1.7</snappy.version>
         <!-- Data Format/Parser End -->
         <!-- Data Mining -->
         <mahout.version>0.10.0</mahout.version>
@@ -174,6 +177,7 @@
 
     <dependencyManagement>
         <dependencies>
+
         </dependencies>
     </dependencyManagement>
 
