@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.concept.RDFResource;
-import com.novbank.ndp.kernel.concept.RDFVocabulary;
+import com.novbank.ndp.kernel.mixin.RDFResource;
+import com.novbank.ndp.kernel.mixin.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/13.

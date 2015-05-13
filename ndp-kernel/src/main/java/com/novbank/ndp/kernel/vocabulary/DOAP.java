@@ -1,8 +1,8 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.concept.RDFProperty;
-import com.novbank.ndp.kernel.concept.RDFResource;
-import com.novbank.ndp.kernel.concept.RDFVocabulary;
+import com.novbank.ndp.kernel.mixin.RDFProperty;
+import com.novbank.ndp.kernel.mixin.RDFResource;
+import com.novbank.ndp.kernel.mixin.RDFVocabulary;
 
 /**
  * Description of a Project (DOAP) vocabulary

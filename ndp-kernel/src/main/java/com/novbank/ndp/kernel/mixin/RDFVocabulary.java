@@ -1,4 +1,4 @@
-package com.novbank.ndp.kernel.concept;
+package com.novbank.ndp.kernel.mixin;
 
 import com.google.common.collect.Sets;
 import com.novbank.ndp.kernel.util.RDFNodeUtils;

@@ -1,10 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.concept.RDFProperty;
-import com.novbank.ndp.kernel.concept.RDFVocabulary;
-
-import java.util.HashSet;
-import java.util.Set;
+import com.novbank.ndp.kernel.mixin.RDFProperty;
+import com.novbank.ndp.kernel.mixin.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/12.
