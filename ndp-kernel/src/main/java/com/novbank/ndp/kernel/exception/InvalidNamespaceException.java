@@ -6,7 +6,7 @@ package com.novbank.ndp.kernel.exception;
  * Created by CaoKe on 2015/5/12.
  */
 public class InvalidNamespaceException extends RepositoryRuntimeException  {
-    private static final long serialVersionUID = -8633142710318445565L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Ordinary constructor

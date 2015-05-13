@@ -6,7 +6,7 @@ package com.novbank.ndp.kernel.exception;
  * Created by CaoKe on 2015/5/12.
  */
 public class RepositoryRuntimeException extends RuntimeException {
-    private static final long serialVersionUID = 458318404728019355L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Ordinary constructor.

@@ -19,7 +19,7 @@ public class RDFResource<T extends Resource> implements RDFType<T> {
         this.uri = uri;
         this.nameSpace = nameSpace;
         this.localName = localName;
-        this.url = nameSpace + localName;
+        this.url = (nameSpace.endsWith("#")||nameSpace.endsWith("/")?nameSpace:"{"+nameSpace+"}") + localName;
     }
 
     @Override
