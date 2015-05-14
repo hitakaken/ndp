@@ -3,6 +3,7 @@ package com.novbank.ndp.kernel.rdfsupport;
 import com.google.common.collect.Lists;
 import com.novbank.ndp.kernel.util.stream.ForwardingStream;
 import com.novbank.ndp.kernel.util.stream.StreamUtils;
+import org.apache.commons.collections4.map.MultiKeyMap;
 
 import javax.jcr.Session;
 import java.util.*;
@@ -12,7 +13,7 @@ import java.util.stream.Stream;
  * Created by hp on 2015/5/14.
  */
 public class RDFStream extends ForwardingStream<RDFTriple> {
-    protected Set<Namespace> namespaces = new HashSet<>();
+    protected MultiKeyMap<String,Namespace> namespaces = new MultiKeyMap<>();
     protected Stream<RDFTriple> triples;
     protected Session context;
     protected RDFResource topic;
@@ -44,25 +45,39 @@ public class RDFStream extends ForwardingStream<RDFTriple> {
     }
 
     public RDFStream(Set<Namespace> namespaces, Stream<RDFTriple> triples, Session context, RDFResource topic) {
-        this.namespaces = namespaces;
+        namespaces(namespaces);
         this.triples = triples;
         this.context = context;
         this.topic = topic;
     }
 
-    public Namespace namespaces(){
-        return null;
+    public MultiKeyMap namespaces(){
+        return namespaces;
     }
 
-    public RDFStream namespaces(String prefix,String uri){
+    public RDFStream namespace(String prefix,String uri){
+        namespaces.put(prefix, uri, new Namespace(uri, prefix));
+
         return this;
     }
 
-    public RDFStream namespaces(Map<String,String> namespaces){
+    public RDFStream namespace(Namespace namespace){
+        namespaces.put(namespace.getPrefix(), namespace.getNamespace(), namespace);
         return this;
     }
 
-    public RDFStream namespaces(Set<Namespace> namespaces){
+    public RDFStream namespaces(final Map<String,String> namespaceMap){
+        if(namespaceMap!=null) namespaceMap.forEach((k, v)-> namespaces.put(k,v,new Namespace(v,k)));
+        return this;
+    }
+
+    public RDFStream namespaces(final Collection<Namespace> namespaceSet){
+        if(namespaceSet!=null) namespaceSet.forEach( n -> namespaces.put(n.getPrefix(),n.getNamespace(),n));
+        return this;
+    }
+
+    public RDFStream namespaces(final MultiKeyMap<String,Namespace> namespaces){
+        if(namespaces!=null) this.namespaces.putAll(namespaces);
         return this;
     }
 
@@ -91,7 +106,7 @@ public class RDFStream extends ForwardingStream<RDFTriple> {
 
     @Override
     protected RDFStream withThisContext(Stream<RDFTriple> newStream) {
-        return new RDFStream(newStream).session(session()).topic(topic());
+        return new RDFStream(newStream).namespaces(namespaces).session(session()).topic(topic());
     }
 
 

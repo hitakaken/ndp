@@ -42,6 +42,10 @@
     <dependencies>
         <!-- Commons -->
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
         </dependency>
@@ -49,22 +53,23 @@
             <groupId>org.javatuples</groupId>
             <artifactId>javatuples</artifactId>
         </dependency>
+
         <!-- JCR -->
         <dependency>
             <groupId>javax.jcr</groupId>
             <artifactId>jcr</artifactId>
         </dependency>
 
-        <!-- RDF -->
-        <!-- Jena -->
+        <!-- Query -->
         <dependency>
-            <groupId>org.apache.jena</groupId>
-            <artifactId>jena-core</artifactId>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-collections</artifactId>
+            <version>${querydsl.version}</version>
         </dependency>
-        <!-- Sesame -->
         <dependency>
-            <groupId>org.openrdf.sesame</groupId>
-            <artifactId>sesame-model</artifactId>
+            <groupId>com.googlecode.cqengine</groupId>
+            <artifactId>cqengine</artifactId>
+            <version>${cqengine.version}</version>
         </dependency>
 
     </dependencies>

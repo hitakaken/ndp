@@ -24,7 +24,7 @@
     <properties>
         <!-- Project Build -->
         <ndp.version>1.0.0-SNAPSHOT</ndp.version>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <gradle.version>2.3</gradle.version>
@@ -99,7 +99,7 @@
         <hibernate-jpa20.version>1.0.1.Final</hibernate-jpa20.version>
         <hibernate-jpa21.version>1.0.0.Final</hibernate-jpa21.version>
         <HikariCP.version>2.3.5</HikariCP.version>
-        <cqengine.version>2.0.0</cqengine.version>
+        <cqengine.version>2.0.2</cqengine.version>
         <!-- RDBMS/JDBC -->
         <derby.version>10.11.1.1</derby.version>
         <hsqldb.version>2.3.2</hsqldb.version>
