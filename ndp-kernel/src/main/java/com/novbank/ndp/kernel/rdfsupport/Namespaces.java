@@ -3,82 +3,43 @@ package com.novbank.ndp.kernel.rdfsupport;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ForwardingMap;
+import com.google.common.collect.HashBiMap;
+import com.google.common.collect.Maps;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * Created by hp on 2015/5/14.
  */
-public class Namespaces implements BiMap<String,String> {
-
-    @Override
-    public int size() {
-        return 0;
+public class Namespaces extends ForwardingMap<String,String> implements BiMap<String,String> {
+    public final BiMap<String,String> prefixMap;
+    public final Map<String,Namespace> namespaces;
+    public Namespaces() {
+        prefixMap = HashBiMap.create();
+        namespaces = Maps.newHashMap();
     }
 
     @Override
-    public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
-    public boolean containsKey(Object key) {
-        return false;
-    }
-
-    @Override
-    public boolean containsValue(Object value) {
-        return false;
-    }
-
-    @Override
-    public String get(Object key) {
-        return null;
-    }
-
-    @Override
-    public String put(String key, String value) {
-        return null;
-    }
-
-    @Override
-    public String remove(Object key) {
-        return null;
-    }
-
-    @Override
-    public String forcePut(String key, String value) {
-        return null;
-    }
-
-    @Override
-    public void putAll(Map<? extends String, ? extends String> map) {
-
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public Set<String> keySet() {
-        return null;
+    public String forcePut(String prefix, String uri) {
+        return delegate().forcePut(prefix,uri);
     }
 
     @Override
     public Set<String> values() {
-        return null;
-    }
-
-    @Override
-    public Set<Entry<String, String>> entrySet() {
-        return null;
+        return inverse().keySet();
     }
 
     @Override
     public BiMap<String, String> inverse() {
-        return null;
+        return delegate().inverse();
     }
+
+    @Override
+    protected BiMap<String, String> delegate() {
+        return prefixMap;
+    }
+
 }
