@@ -1,8 +1,8 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFProperty;
-import com.novbank.ndp.kernel.mixin.RDFResource;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFProperty;
+import com.novbank.ndp.kernel.rdfsupport.RDFResource;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/12.
@@ -170,6 +170,7 @@ public class OWL extends RDFVocabulary{
         versionInfo = addProperty("versionInfo");
         versionIRI = addProperty("versionIRI");
         withRestrictions = addProperty("withRestrictions");
+        lock();
     }
 
     public static final RDFResource ALL_DIFFERENT = INSTANCE.AllDifferent;

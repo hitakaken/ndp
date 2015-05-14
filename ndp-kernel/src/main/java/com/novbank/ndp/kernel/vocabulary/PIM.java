@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFProperty;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFProperty;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * PRISM Inline Markup
@@ -30,6 +30,7 @@ public class PIM extends RDFVocabulary{
         organization = addProperty("organization");
         person = addProperty("person");
         quote = addProperty("quote");
+        lock();
     }
 
     public static final RDFProperty EVENT = INSTANCE.event;

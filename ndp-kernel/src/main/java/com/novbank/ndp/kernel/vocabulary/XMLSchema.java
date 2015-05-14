@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFResource;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFResource;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/12.
@@ -102,6 +102,7 @@ public class XMLSchema extends RDFVocabulary{
         gYear = addResource("gYear");
         gYearMonth = addResource("gYearMonth");
         gMonthDay = addResource("gMonthDay");
+        lock();
     }
 
     public static final RDFResource FLOAT = INSTANCE.xfloat;

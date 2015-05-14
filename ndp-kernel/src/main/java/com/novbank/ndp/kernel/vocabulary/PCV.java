@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFResource;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFResource;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * PRISM Controlled Vocabulary
@@ -35,6 +35,7 @@ public class PCV extends RDFVocabulary{
         relatedTerm = addResource("relatedTerm");
         synonym = addResource("synonym");
         vocabulary = addResource("vocabulary");
+        lock();
     }
 
     public static final RDFResource BROADER_TERM = INSTANCE.broaderTerm;

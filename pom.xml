@@ -32,6 +32,8 @@
         <!-- Dynamic Language Support -->
         <groovy.version>2.4.3</groovy.version>
         <scala.version>2.10.5</scala.version>
+        <jruby.version>9.0.0.0.pre2</jruby.version>
+        <jython.version>2.7.0</jython.version>
         <streamsupport>1.2.1</streamsupport><!-- java 8 -->
         <!-- AOP Support -->
         <aspectj.version>1.8.5</aspectj.version>
@@ -72,6 +74,8 @@
         <spring.data.solr.version>1.4.0.RELEASE</spring.data.solr.version>
         <spring.data.elasticsearch.version>1.2.0.RELEASE</spring.data.elasticsearch.version>
         <spring.security.version>4.0.1.RELEASE</spring.security.version>
+        <!-- Other Utility -->
+        <javatuples.version>1.2</javatuples.version>
         <!-- Utilities End-->
         <!-- Database Start -->
         <!-- JCR -->
@@ -106,7 +110,7 @@
         <neo4j.version>2.1.8</neo4j.version><!--<neo4j.version>2.2.1</neo4j.version>--><!-- Spring Data Neo4j Rest 对2.2支持存在bug -->
         <neo4j.spatial.version>0.13-neo4j-2.1.8</neo4j.spatial.version>
         <neo4j.cypher-dsl.version>2.0.1</neo4j.cypher-dsl.version>
-        <tinkerpop.blueprints.version>2.6.0</tinkerpop.blueprints.version>
+        <tinkerpop2.version>2.6.0</tinkerpop2.version>
         <tinkerpop3.version>3.0.0.M8-incubating</tinkerpop3.version>
         <!-- Document/Mongo -->
         <mongo.java.version>3.0.0</mongo.java.version>

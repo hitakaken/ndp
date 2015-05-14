@@ -1,8 +1,8 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFProperty;
-import com.novbank.ndp.kernel.mixin.RDFResource;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFProperty;
+import com.novbank.ndp.kernel.rdfsupport.RDFResource;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/12.
@@ -168,6 +168,7 @@ public class FOAF extends RDFVocabulary{
         workInfoHomepage = addProperty("workInfoHomepage");
         workplaceHomepage = addProperty("workplaceHomepage");
         yahooChatID = addProperty("yahooChatID");
+        lock();
     }
 
     public static final RDFResource AGENT = INSTANCE.Agent;

@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFResource;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFResource;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/12.
@@ -38,6 +38,7 @@ public class DCTypes extends RDFVocabulary {
         Sound = addClass("Sound");
         StillImage = addClass("StillImage");
         Text = addClass("Text");
+        lock();
     }
 
     public static final RDFResource COLLECTION = INSTANCE.Collection;

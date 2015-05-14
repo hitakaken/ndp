@@ -1,6 +1,6 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/13.
@@ -12,5 +12,6 @@ public class EVENT extends RDFVocabulary {
 
     public EVENT() {
         super(NAMESPACE,PREFIX);
+        lock();
     }
 }

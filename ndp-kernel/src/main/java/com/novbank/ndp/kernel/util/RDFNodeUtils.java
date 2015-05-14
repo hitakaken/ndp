@@ -1,23 +1,10 @@
 package com.novbank.ndp.kernel.util;
 
-import com.novbank.ndp.kernel.mixin.RDFProperty;
-import com.novbank.ndp.kernel.mixin.RDFResource;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
-import com.novbank.ndp.kernel.mixin.RDFValue;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ValueFactoryImpl;
-
-import java.util.Map;
-
 /**
  * Created by CaoKe on 2015/5/12.
  */
 public class RDFNodeUtils {
-    private static ValueFactory factory = ValueFactoryImpl.getInstance();
+    /*private static ValueFactory factory = ValueFactoryImpl.getInstance();
 
     public static RDFResource resource(String namespace,String localName){
         return new RDFResource<>(createJenaResource(namespace, localName), createSesameURI(namespace, localName),namespace,localName);
@@ -66,5 +53,5 @@ public class RDFNodeUtils {
     public static String abbreviation(RDFResource resource, Map<String,String> namespaces){
         return namespaces.containsKey(resource.getNameSpace())?
                 namespaces.get(resource.getNameSpace()) + ":" + resource.getLocalName() : resource.toString();
-    }
+    }*/
 }

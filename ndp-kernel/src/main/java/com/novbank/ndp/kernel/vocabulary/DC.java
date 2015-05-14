@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFProperty;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFProperty;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/12.
@@ -44,6 +44,7 @@ public class DC extends RDFVocabulary {
         rights = addProperty("rights");
         subject = addProperty("subject");
         type = addProperty("type");
+        lock();
     }
 
     public static final RDFProperty TITLE = INSTANCE.title;

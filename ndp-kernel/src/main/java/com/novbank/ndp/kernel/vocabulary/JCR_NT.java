@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFResource;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFResource;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * JCR NodeType
@@ -45,6 +45,7 @@ public class JCR_NT extends RDFVocabulary{
         activity = addResource("activity");
         configuration = addResource("configuration");
         query = addResource("query");
+        lock();
     }
 
     public static final RDFResource BASE = INSTANCE.base;

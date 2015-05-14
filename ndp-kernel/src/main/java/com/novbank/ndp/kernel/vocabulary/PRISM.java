@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFProperty;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFProperty;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * Publishing Requirements for Industry Standard Metadata
@@ -116,6 +116,7 @@ public class PRISM extends RDFVocabulary{
         teaser = addProperty("teaser");
         volume = addProperty("volume");
         wordCount = addProperty("wordCount");
+        lock();
     }
 
     public static final RDFProperty BYTE_COUNT = INSTANCE.byteCount;

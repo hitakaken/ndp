@@ -1,8 +1,8 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFProperty;
-import com.novbank.ndp.kernel.mixin.RDFResource;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFProperty;
+import com.novbank.ndp.kernel.rdfsupport.RDFResource;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/12.
@@ -47,6 +47,7 @@ public class RDFS extends RDFVocabulary{
         seeAlso = addProperty("seeAlso");
         isDefinedBy = addProperty("isDefinedBy");
         member = addProperty("member");
+        lock();
     }
 
     public static final RDFResource RESOURCE = INSTANCE.Resource;

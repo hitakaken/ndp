@@ -20,5 +20,6 @@
         <module>ndp-commons-bom</module>
         <module>ndp-jcr-bom</module>
         <module>ndp-ldp-bom</module>
+        <module>ndp-graph-bom</module>
     </modules>
 </project>

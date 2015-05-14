@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFProperty;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFProperty;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * PRISM Rights Language
@@ -22,6 +22,7 @@ public class PRL extends RDFVocabulary{
         geography = addProperty("geography");
         industry = addProperty("industry");
         usage = addProperty("usage");
+        lock();
     }
 
     public static final RDFProperty GEOGRAPHY = INSTANCE.geography;

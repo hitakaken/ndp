@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.vocabulary;
 
-import com.novbank.ndp.kernel.mixin.RDFResource;
-import com.novbank.ndp.kernel.mixin.RDFVocabulary;
+import com.novbank.ndp.kernel.rdfsupport.RDFResource;
+import com.novbank.ndp.kernel.rdfsupport.RDFVocabulary;
 
 /**
  * Created by CaoKe on 2015/5/13.
@@ -40,6 +40,7 @@ public class JCR_MIX extends RDFVocabulary{
         lifecycle = addResource("lifecycle");
         simpleVersionable = addResource("simpleVersionable");
         versionable = addResource("versionable");
+        lock();
     }
 
     public static final RDFResource TITLE = INSTANCE.title;

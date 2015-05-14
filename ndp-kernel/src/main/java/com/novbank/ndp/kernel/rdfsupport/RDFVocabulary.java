@@ -1,7 +1,6 @@
-package com.novbank.ndp.kernel.mixin;
+package com.novbank.ndp.kernel.rdfsupport;
 
 import com.google.common.collect.Sets;
-import com.novbank.ndp.kernel.util.RDFNodeUtils;
 
 import java.util.*;
 
@@ -9,18 +8,17 @@ import java.util.*;
  * Created by CaoKe on 2015/5/12.
  */
 public class RDFVocabulary {
-    public String namespace;
-    public String prefix;
+    public Namespace NS;
     protected Set<String> classNames;
     protected Set<String> propertyNames;
     protected Set<String> resourceNames;
     protected Map<String,RDFResource> classMap;
     protected Map<String,RDFProperty> propertyMap;
     protected Map<String,RDFResource> resourceMap;
+    protected boolean locked = false;
 
     public RDFVocabulary(String nameSpace, String prefix){
-        this.namespace = nameSpace;
-        this.prefix = prefix;
+        this.NS = new Namespace(nameSpace,prefix);
         classNames = new LinkedHashSet<>();
         propertyNames = new LinkedHashSet<>();
         resourceNames = new LinkedHashSet<>();
@@ -43,11 +41,11 @@ public class RDFVocabulary {
     }
 
     public String getNameSpace() {
-        return namespace;
+        return NS.getNamespace();
     }
 
     public String getPrefix() {
-        return prefix;
+        return NS.getPrefix();
     }
 
     public Set<String> classNames() {
@@ -74,20 +72,21 @@ public class RDFVocabulary {
         return resourceMap.values();
     }
 
-    public RDFResource rdfClass(String resourceName) {
+    public RDFResource getClass(String resourceName) {
         return classMap.containsKey(resourceName)?classMap.get(resourceName):null;
     }
 
-    public RDFProperty property(String propertyName) {
+    public RDFProperty getProperty(String propertyName) {
         return propertyMap.containsKey(propertyName)?propertyMap.get(propertyName):null;
     }
 
-    public RDFResource resource(String resourceName) {
+    public RDFResource getResource(String resourceName) {
         return resourceMap.containsKey(resourceName)?resourceMap.get(resourceName):null;
     }
 
     public RDFResource addClass(String resourceName){
-        RDFResource resource = RDFNodeUtils.resource(namespace, resourceName);
+        if(locked) return getClass(resourceName);
+        RDFResource resource = resource(resourceName);
         classNames.add(resourceName);
         classMap.put(resourceName, resource);
         addResource(resourceName,resource);
@@ -95,15 +94,19 @@ public class RDFVocabulary {
     }
 
     public RDFProperty addProperty(String propertyName){
-        RDFProperty property = RDFNodeUtils.property(namespace, propertyName);
+        if(locked) return getProperty(propertyName);
+        RDFProperty property = property(propertyName);
         propertyNames.add(propertyName);
         propertyMap.put(propertyName, property);
         addResource(propertyName, property);
         return property;
     }
 
+
+
     public RDFResource addResource(String resourceName, RDFResource resource){
-        resource = resource!=null?resource:RDFNodeUtils.resource(namespace, resourceName);
+        if(locked) return getResource(resourceName);
+        resource = resource!=null?resource:resource(resourceName);
         resourceNames.add(resourceName);
         resourceMap.put(resourceName, resource);
         return resource;
@@ -111,5 +114,23 @@ public class RDFVocabulary {
 
     public RDFResource addResource(String resourceName){
         return addResource(resourceName,null);
+    }
+
+    public RDFVocabulary lock(){
+        locked = true;
+        return this;
+    }
+
+    public RDFVocabulary unlock(){
+        locked = false;
+        return this;
+    }
+
+    private RDFResource resource(String resourceName) {
+        return new RDFResource(NS,resourceName);
+    }
+
+    private RDFProperty property(String propertyName) {
+        return new RDFProperty(NS,propertyName);
     }
 }
