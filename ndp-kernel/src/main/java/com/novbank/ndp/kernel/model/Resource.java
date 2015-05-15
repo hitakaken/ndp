@@ -1,5 +1,9 @@
 package com.novbank.ndp.kernel.model;
 
+import com.novbank.ndp.kernel.exception.MalformedRdfException;
+import com.novbank.ndp.kernel.rdfsupport.RDFStream;
+
+import javax.jcr.AccessDeniedException;
 import javax.jcr.Node;
 import javax.jcr.Property;
 import javax.jcr.version.Version;
@@ -159,5 +163,59 @@ public interface Resource {
      */
     Node getNodeVersion(String label);
 
+    /**
+     * Return the RDF properties of this object using the provided context
+     *
+     * @param context the context
+     * @return the rdf properties of this object using the provided context
+     */
+    RDFStream getTriples(Class<? extends RDFStream> context);
 
+    /**
+     * Return the RDF properties of this object using the provided contexts
+     *
+     * @param contexts the contexts
+     * @return the rdf properties of this object using the provided context
+     */
+    RDFStream getTriples(Class<? extends RDFStream>... contexts);
+
+    /**
+     * Return the RDF properties of this object using the provided contexts
+     *
+     * @param contexts the contexts
+     * @return the rdf properties of this object using the provided context
+     */
+    RDFStream getTriples(Iterator<? extends Class<? extends RDFStream>> contexts);
+
+    /**
+     * Return the RDF properties of this object using the provided contexts
+     *
+     * @param contexts the contexts
+     * @return the rdf properties of this object using the provided context
+     */
+    RDFStream getTriples(Iterable<? extends Class<? extends RDFStream>> contexts);
+
+    /**
+     * Update the provided properties with a SPARQL Update query. The updated
+     * properties may be serialized to the JCR store.
+     *
+     * After applying the statement, clients SHOULD check the result
+     * of #getDatasetProblems, which may include problems when attempting to
+     * serialize the data to JCR.
+     *
+     * @param sparqlUpdateStatement sparql update statement
+     * @param originalTriples original triples
+     * @throws MalformedRdfException if malformed rdf exception occurred
+     * @throws AccessDeniedException if access denied in updating properties
+     */
+    void updateProperties(final String sparqlUpdateStatement, final RDFStream originalTriples) throws MalformedRdfException, AccessDeniedException;
+
+    /**
+     * Replace the properties of this object with the properties from the given model
+     *
+     * @param inputTriples the input triples
+     * @param originalTriples the original triples
+     * @throws MalformedRdfException if malformed rdf exception occurred
+     */
+    void replaceProperties(final RDFStream inputTriples, final RDFStream originalTriples) throws MalformedRdfException;
 }

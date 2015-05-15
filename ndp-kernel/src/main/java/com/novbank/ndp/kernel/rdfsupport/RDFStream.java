@@ -1,9 +1,10 @@
 package com.novbank.ndp.kernel.rdfsupport;
 
+import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Table;
 import com.novbank.ndp.kernel.util.stream.ForwardingStream;
 import com.novbank.ndp.kernel.util.stream.StreamUtils;
-import org.apache.commons.collections4.map.MultiKeyMap;
 
 import javax.jcr.Session;
 import java.util.*;
@@ -13,7 +14,7 @@ import java.util.stream.Stream;
  * Created by hp on 2015/5/14.
  */
 public class RDFStream extends ForwardingStream<RDFTriple> {
-    protected MultiKeyMap<String,Namespace> namespaces = new MultiKeyMap<>();
+    protected Table<String,String,Namespace> namespaces = HashBasedTable.create();
     protected Stream<RDFTriple> triples;
     protected Session context;
     protected RDFResource topic;
@@ -51,33 +52,39 @@ public class RDFStream extends ForwardingStream<RDFTriple> {
         this.topic = topic;
     }
 
-    public MultiKeyMap namespaces(){
+    public Table<String,String,Namespace> namespaces(){
         return namespaces;
     }
 
     public RDFStream namespace(String prefix,String uri){
-        namespaces.put(prefix, uri, new Namespace(uri, prefix));
-
+        put(prefix, uri, new Namespace(uri, prefix));
         return this;
     }
 
     public RDFStream namespace(Namespace namespace){
-        namespaces.put(namespace.getPrefix(), namespace.getNamespace(), namespace);
+        put(namespace.getPrefix(), namespace.getNamespace(), namespace);
         return this;
     }
 
+    private void put(String prefix,String uri,Namespace namespace){
+        if(namespaces.containsRow(prefix)) namespaces.rowKeySet().remove(prefix);
+        if(namespaces.containsColumn(uri)) namespaces.columnKeySet().remove(uri);
+        namespaces.put(prefix,uri,namespace);
+    }
+
     public RDFStream namespaces(final Map<String,String> namespaceMap){
-        if(namespaceMap!=null) namespaceMap.forEach((k, v)-> namespaces.put(k,v,new Namespace(v,k)));
+        if(namespaceMap!=null) namespaceMap.forEach((k, v)-> put(k, v, new Namespace(v, k)));
         return this;
     }
 
     public RDFStream namespaces(final Collection<Namespace> namespaceSet){
-        if(namespaceSet!=null) namespaceSet.forEach( n -> namespaces.put(n.getPrefix(),n.getNamespace(),n));
+        if(namespaceSet!=null) namespaceSet.forEach( n -> put(n.getPrefix(), n.getNamespace(), n));
         return this;
     }
 
-    public RDFStream namespaces(final MultiKeyMap<String,Namespace> namespaces){
-        if(namespaces!=null) this.namespaces.putAll(namespaces);
+    public RDFStream namespaces(Table<String,String,Namespace> namespaces){
+        if(namespaces!=null)
+            namespaces.cellSet().forEach(cell -> put(cell.getRowKey(),cell.getColumnKey(),cell.getValue()));
         return this;
     }
 
@@ -106,7 +113,7 @@ public class RDFStream extends ForwardingStream<RDFTriple> {
 
     @Override
     protected RDFStream withThisContext(Stream<RDFTriple> newStream) {
-        return new RDFStream(newStream).namespaces(namespaces).session(session()).topic(topic());
+        return new RDFStream(newStream).namespaces(namespaces()).session(session()).topic(topic());
     }
 
 
