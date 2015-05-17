@@ -97,8 +97,8 @@ public class DCTerms extends RDFVocabulary {
     public final RDFResource RFC5646;
     public final RDFResource URI;
     public final RDFResource W3CDTF;
-    
-    public DCTerms() {
+
+    private DCTerms() {
         super(NAMESPACE, PREFIX);
         //Property
         _abstract = addProperty("abstract");

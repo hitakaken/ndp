@@ -17,7 +17,7 @@ public class PRL extends RDFVocabulary{
     public final RDFProperty industry;
     public final RDFProperty usage;
 
-    public PRL() {
+    private PRL() {
         super(NAMESPACE,PREFIX);
         geography = addProperty("geography");
         industry = addProperty("industry");

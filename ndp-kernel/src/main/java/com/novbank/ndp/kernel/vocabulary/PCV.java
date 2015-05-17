@@ -24,7 +24,7 @@ public class PCV extends RDFVocabulary{
     public final RDFResource vocabulary;
 
 
-    public PCV() {
+    private PCV() {
         super(NAMESPACE,PREFIX);
         broaderTerm = addResource("broaderTerm");
         code = addResource("code");

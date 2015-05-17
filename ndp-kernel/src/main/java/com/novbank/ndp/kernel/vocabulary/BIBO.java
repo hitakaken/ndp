@@ -10,7 +10,7 @@ public class BIBO extends RDFVocabulary {
     public static final String PREFIX = "bibo";
     public static final BIBO INSTANCE = new BIBO();
 
-    public BIBO() {
+    private BIBO() {
         super(NAMESPACE, PREFIX);
     }
 }

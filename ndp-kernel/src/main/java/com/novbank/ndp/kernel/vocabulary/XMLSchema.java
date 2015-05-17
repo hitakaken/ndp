@@ -56,7 +56,7 @@ public class XMLSchema extends RDFVocabulary{
     public final RDFResource gYearMonth;
     public final RDFResource gMonthDay;
 
-    public XMLSchema() {
+    private XMLSchema() {
         super(NAMESPACE,PREFIX);
         xfloat = addResource("float");
         xdouble = addResource("double");

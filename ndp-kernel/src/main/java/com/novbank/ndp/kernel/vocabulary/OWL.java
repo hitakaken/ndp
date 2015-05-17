@@ -91,7 +91,7 @@ public class OWL extends RDFVocabulary{
     public final RDFProperty versionIRI;
     public final RDFProperty withRestrictions;
 
-    public OWL() {
+    private OWL() {
         super(NAMESPACE,PREFIX);
         AllDifferent = addClass("AllDifferent");
         AllDisjointClasses = addClass("AllDisjointClasses");

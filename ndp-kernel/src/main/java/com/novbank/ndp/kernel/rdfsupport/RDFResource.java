@@ -15,19 +15,23 @@ public class RDFResource extends RDFValue {
         this.abbreviation = NS.getPrefix() + ":" + localName;
     }
 
-    public String getNameSpace() {
+    public String namespace() {
         return NS.getNamespace();
     }
 
-    public String getPrefix(){
+    public String prefix(){
         return NS.getPrefix();
     }
 
-    public String getLocalName() {
+    public Namespace NS(){
+        return NS;
+    }
+
+    public String localName() {
         return localName;
     }
 
-    public String getAbbreviation(){
+    public String abbr(){
         return abbreviation;
     }
 }

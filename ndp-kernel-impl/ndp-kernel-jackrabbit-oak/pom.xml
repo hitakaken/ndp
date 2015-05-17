@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.novbank.ndp</groupId>
+        <artifactId>ndp</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.novbank.ndp.kernel</groupId>
+    <artifactId>ndp-kernel-jackrabbit-oak</artifactId>
+    <name>NovBank Data Platform :: Kernel :: Jackrabbit Oak</name>
+    <description>NovBank Data Platform Kernel,  Provides the basic JCR abstractions on
+        Apache Jackrabbit Oak at the heart of the NDP information architecture and machinery for manipulating them.</description>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.novbank.ndp</groupId>
+                <artifactId>ndp-commons-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.novbank.ndp</groupId>
+                <artifactId>ndp-jcr-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.novbank.ndp</groupId>
+                <artifactId>ndp-ldp-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.novbank.ndp.kernel</groupId>
+            <artifactId>ndp-kernel</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jackrabbit</groupId>
+            <artifactId>oak-core</artifactId>
+        </dependency>
+    </dependencies>
+    
+</project>

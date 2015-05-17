@@ -93,8 +93,8 @@ public class JCR extends RDFVocabulary{
     public final RDFResource unfiled;
     public final RDFResource xmltext;
     public final RDFResource xmlcharacters;
-    
-    public JCR() {
+
+    private JCR() {
         super(NAMESPACE,PREFIX);
         primaryType = addProperty("primaryType");
         mixinTypes = addProperty("mixinTypes");

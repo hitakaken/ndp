@@ -64,7 +64,7 @@ public class DOAP extends RDFVocabulary{
     public final RDFProperty audience;
     public final RDFProperty blog;
 
-    public DOAP() {
+    private DOAP() {
         super(NAMESPACE,PREFIX);
         Project = addClass("Project");
         Version = addClass("Version");

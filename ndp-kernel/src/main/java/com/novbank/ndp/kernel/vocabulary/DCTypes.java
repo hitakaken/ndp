@@ -23,8 +23,8 @@ public class DCTypes extends RDFVocabulary {
     public final RDFResource Sound;
     public final RDFResource StillImage;
     public final RDFResource Text;
-    
-    public DCTypes() {
+
+    private DCTypes() {
         super(NAMESPACE, PREFIX);
         Collection = addClass("collection");
         Dataset = addClass("Dataset");

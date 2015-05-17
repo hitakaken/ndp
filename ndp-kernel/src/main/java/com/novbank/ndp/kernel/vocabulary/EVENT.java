@@ -10,7 +10,7 @@ public class EVENT extends RDFVocabulary {
     public static final String PREFIX = "event";
     public static final EVENT INSTANCE = new EVENT();
 
-    public EVENT() {
+    private EVENT() {
         super(NAMESPACE,PREFIX);
         lock();
     }

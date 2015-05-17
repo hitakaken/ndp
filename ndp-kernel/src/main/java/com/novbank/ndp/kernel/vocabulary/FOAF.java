@@ -90,7 +90,7 @@ public class FOAF extends RDFVocabulary{
     public final RDFProperty yahooChatID;
 
 
-    public FOAF() {
+    private FOAF() {
         super(NAMESPACE,PREFIX);
         Agent = addClass("Agent");
         Document = addClass("Document");

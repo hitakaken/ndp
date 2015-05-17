@@ -13,7 +13,9 @@ public class Vocabularies {
     public final static JCR_MIX   MIX = com.novbank.ndp.kernel.vocabulary.JCR_MIX.INSTANCE;
     public final static JCR_NT    NT = com.novbank.ndp.kernel.vocabulary.JCR_NT.INSTANCE;
     public final static LDP       LDP = com.novbank.ndp.kernel.vocabulary.LDP.INSTANCE;
+    public final static NDP       NDP = com.novbank.ndp.kernel.vocabulary.NDP.INSTANCE;
     public final static OWL       OWL = com.novbank.ndp.kernel.vocabulary.OWL.INSTANCE;
+    public final static PREMIS PREMIS = com.novbank.ndp.kernel.vocabulary.PREMIS.INSTANCE;
     public final static PRISM     PRISM = com.novbank.ndp.kernel.vocabulary.PRISM.INSTANCE;
     public final static PRL       PRL = com.novbank.ndp.kernel.vocabulary.PRL.INSTANCE;
     public final static PIM       PIM = com.novbank.ndp.kernel.vocabulary.PIM.INSTANCE;
@@ -21,4 +23,9 @@ public class Vocabularies {
     public final static RDF       RDF = com.novbank.ndp.kernel.vocabulary.RDF.INSTANCE;
     public final static RDFS      RDFS = com.novbank.ndp.kernel.vocabulary.RDFS.INSTANCE;
     public final static XMLSchema XSD = com.novbank.ndp.kernel.vocabulary.XMLSchema.INSTANCE;
+
+    public final static String[] EXPOSED_PROTECTED_JCR_TYPES = new String[]{
+            JCR.uuid.abbr(),JCR.lastModified.abbr(),JCR.created.abbr(),JCR.createdBy.abbr(),
+            JCR.primaryType.abbr(),JCR.mixinTypes.abbr()
+    };
 }

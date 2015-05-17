@@ -22,11 +22,6 @@
                 <artifactId>ndp-kernel</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.novbank</groupId>
-                <artifactId>ndp-kernel-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

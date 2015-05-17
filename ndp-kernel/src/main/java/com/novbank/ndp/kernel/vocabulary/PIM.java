@@ -21,7 +21,7 @@ public class PIM extends RDFVocabulary{
     public final RDFProperty person;
     public final RDFProperty quote;
 
-    public PIM() {
+    private PIM() {
         super(NAMESPACE,PREFIX);
         event = addProperty("event");
         industry = addProperty("industry");

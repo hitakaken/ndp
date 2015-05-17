@@ -10,8 +10,18 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <groupId>com.novbank.ndp.kernel</groupId>
     <artifactId>ndp-kernel-impl</artifactId>
     <name>NovBank Data Platform :: Kernel Implementation</name>
     <description>NovBank Data Platform Kernel,  Provides the basic abstractions at the heart of the NDP information architecture and machinery for manipulating them.</description>
-    
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>ndp-kernel-jackrabbit-oak</module>
+        <!--<module>ndp-kernel-modeshape</module>
+        <module>ndp-kernel-jena</module>
+        <module>ndp-kernel-sesame</module>-->
+    </modules>
+
+
 </project>

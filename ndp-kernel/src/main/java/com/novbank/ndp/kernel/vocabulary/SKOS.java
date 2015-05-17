@@ -10,7 +10,7 @@ public class SKOS extends RDFVocabulary{
     public static final String PREFIX = "skos";
     public static final SKOS INSTANCE = new SKOS();
 
-    public SKOS() {
+    private SKOS() {
         super(NAMESPACE,PREFIX);
     }
 }

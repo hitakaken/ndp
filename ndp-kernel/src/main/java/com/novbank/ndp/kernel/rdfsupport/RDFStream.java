@@ -1,10 +1,9 @@
 package com.novbank.ndp.kernel.rdfsupport;
 
 import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Table;
-import com.novbank.ndp.kernel.util.stream.ForwardingStream;
-import com.novbank.ndp.kernel.util.stream.StreamUtils;
+import com.novbank.ndp.kernel.util.stream.ForwardingSeq;
+import org.jooq.lambda.Seq;
 
 import javax.jcr.Session;
 import java.util.*;
@@ -13,39 +12,43 @@ import java.util.stream.Stream;
 /**
  * Created by hp on 2015/5/14.
  */
-public class RDFStream extends ForwardingStream<RDFTriple> {
+public class RDFStream extends ForwardingSeq<RDFTriple> {
     protected Table<String,String,Namespace> namespaces = HashBasedTable.create();
-    protected Stream<RDFTriple> triples;
+    protected Seq<RDFTriple> triples;
     protected Session context;
     protected RDFResource topic;
 
     private static final RDFTriple[] NONE = new RDFTriple[] {};
 
     public RDFStream(RDFTriple... triples){
-        this(StreamUtils.toStream(triples));
+        this(Stream.of(triples));
+    }
+
+    public RDFStream(Stream<RDFTriple> triples){
+        this(Seq.seq(triples));
     }
 
     public RDFStream(Iterator<RDFTriple> triples){
-        this(StreamUtils.toStream(triples));
+        this(Seq.seq(triples));
     }
 
     public RDFStream(Iterable<RDFTriple> triples){
-        this(StreamUtils.toStream(triples));
+        this(Seq.seq(triples));
     }
 
     public RDFStream(Collection<RDFTriple> triples){
-        this(StreamUtils.toStream(triples));
+        this(Seq.seq(triples));
     }
 
     public RDFStream(){
         this(NONE);
     }
 
-    public RDFStream(Stream<RDFTriple> triples){
+    public RDFStream(Seq<RDFTriple> triples){
         this.triples = triples;
     }
 
-    public RDFStream(Set<Namespace> namespaces, Stream<RDFTriple> triples, Session context, RDFResource topic) {
+    public RDFStream(Set<Namespace> namespaces, Seq<RDFTriple> triples, Session context, RDFResource topic) {
         namespaces(namespaces);
         this.triples = triples;
         this.context = context;
@@ -107,12 +110,12 @@ public class RDFStream extends ForwardingStream<RDFTriple> {
     }
 
     @Override
-    protected Stream<RDFTriple> delegate() {
+    protected Seq<RDFTriple> delegate() {
         return triples;
     }
 
     @Override
-    protected RDFStream withThisContext(Stream<RDFTriple> newStream) {
+    protected RDFStream withThisContext(Seq<RDFTriple> newStream) {
         return new RDFStream(newStream).namespaces(namespaces()).session(session()).topic(topic());
     }
 

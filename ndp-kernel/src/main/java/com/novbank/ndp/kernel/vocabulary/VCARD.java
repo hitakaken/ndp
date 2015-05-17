@@ -10,7 +10,7 @@ public class VCARD extends RDFVocabulary {
     public static final String PREFIX = "vcard";
     public static final VCARD INSTANCE = new VCARD();
 
-    public VCARD() {
+    private VCARD() {
         super(NAMESPACE,PREFIX);
     }
 }

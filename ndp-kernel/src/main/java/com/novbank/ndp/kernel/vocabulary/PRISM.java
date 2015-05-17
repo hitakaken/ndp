@@ -64,7 +64,7 @@ public class PRISM extends RDFVocabulary{
     public final RDFProperty volume;
     public final RDFProperty wordCount;
 
-    public PRISM() {
+    private PRISM() {
         super(NAMESPACE,PREFIX);
         byteCount = addProperty("byteCount");
         category = addProperty("category");

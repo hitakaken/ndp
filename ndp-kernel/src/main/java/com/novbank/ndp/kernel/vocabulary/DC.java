@@ -27,7 +27,7 @@ public class DC extends RDFVocabulary {
     public final RDFProperty subject;
     public final RDFProperty type;
 
-    public DC() {
+    private DC() {
         super(NAMESPACE,PREFIX);
         title = addProperty("title");
         source = addProperty("source");

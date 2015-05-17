@@ -32,7 +32,7 @@ public class LDP extends RDFVocabulary{
     public final RDFProperty membershipResource;
 
 
-    public LDP(){
+    private LDP(){
         super(NAMESPACE,PREFIX);
         BasicContainer = addClass("BasicContainer");
         Container =addClass("Container");        

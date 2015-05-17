@@ -25,7 +25,7 @@ public class JCR_MIX extends RDFVocabulary{
     public final RDFResource simpleVersionable;
     public final RDFResource versionable;
 
-    public JCR_MIX() {
+    private JCR_MIX() {
         super(NAMESPACE,PREFIX);
         title = addResource("title");
         created = addResource("created");

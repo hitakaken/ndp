@@ -10,7 +10,7 @@ public class RSS extends RDFVocabulary {
     public static final String PREFIX = "rss";
     public static final RSS INSTANCE = new RSS();
 
-    public RSS() {
+    private RSS() {
         super(NAMESPACE,PREFIX);
     }
 }

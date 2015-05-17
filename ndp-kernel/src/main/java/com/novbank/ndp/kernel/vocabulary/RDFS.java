@@ -30,7 +30,7 @@ public class RDFS extends RDFVocabulary{
     public final RDFProperty isDefinedBy;
     public final RDFProperty member;
 
-    public RDFS() {
+    private RDFS() {
         super(NAMESPACE,PREFIX);
         Resource = addClass("Resource");
         Class = addClass("Class");

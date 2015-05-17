@@ -33,7 +33,8 @@ public class RDF extends RDFVocabulary{
     public final RDFProperty rest;
     //Other
     public final RDFResource nil;
-    public RDF() {
+
+    private RDF() {
         super(NAMESPACE,PREFIX);
         Property = addClass("Property");
         Statement = addClass("Statement");

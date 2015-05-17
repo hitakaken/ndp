@@ -28,8 +28,8 @@ public class JCR_NT extends RDFVocabulary{
     public final RDFResource activity;
     public final RDFResource configuration;
     public final RDFResource query;
-    
-    public JCR_NT() {
+
+    private JCR_NT() {
         super(NAMESPACE,PREFIX);
         base = addResource("base");
         hierarchyNode = addResource("hierarchyNode");
