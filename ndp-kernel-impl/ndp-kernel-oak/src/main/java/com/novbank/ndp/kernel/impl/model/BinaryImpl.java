@@ -188,7 +188,7 @@ public class BinaryImpl extends ResourceImpl implements Binary {
             contentSizeHistogram.update(dataProperty.getLength());
 
             contentNode.setProperty(PREMIS.hasSize.abbr(), dataProperty.getLength());
-            //TODO Binary 校验码的存储和对比
+            //TODO Binary 校验码的存储和读取
             LOGGER.debug("Decorated data property at path: {}", dataProperty.getPath());
         }
     }

@@ -1,7 +1,13 @@
 package com.novbank.ndp.kernel.impl.service.result;
 
 import com.novbank.ndp.kernel.service.result.CacheEntry;
+import org.apache.jackrabbit.oak.plugins.document.DocumentNodeStore;
+import org.apache.jackrabbit.oak.plugins.memory.MemoryNodeStore;
+import org.apache.jackrabbit.oak.plugins.segment.SegmentNodeStore;
+import org.apache.jackrabbit.oak.plugins.segment.SegmentNodeStoreService;
 import org.apache.jackrabbit.oak.spi.blob.BlobStore;
+import org.apache.jackrabbit.oak.spi.state.NodeStore;
+import org.joor.Reflect;
 
 import javax.jcr.Binary;
 import javax.jcr.Property;
@@ -29,15 +35,8 @@ public class CacheEntryFactory {
     public static CacheEntry forProperty(final Repository repository, final Property property)
             throws RepositoryException {
         final Binary binary = property.getBinary();
-        final BlobStore store = binaryStore(repository);
-
-        if (binary instanceof ExternalBinaryValue) {
-            return new ProjectedCacheEntry(property);
-        } else if (binary instanceof InMemoryBinaryValue) {
-            return new BinaryCacheEntry(property);
-        } else {
-            return forProperty(store, property);
-        }
+        final NodeStore store = nodeStore(repository);
+        return forProperty(store, property);
     }
 
     /**
@@ -47,27 +46,25 @@ public class CacheEntryFactory {
      * @return store specific cache entry
      * @throws RepositoryException if repository exception occurred
      */
-    public static CacheEntry forProperty(final BlobStore store, final Property property)
+    public static CacheEntry forProperty(final NodeStore store, final Property property)
             throws RepositoryException {
         final Binary binary = property.getBinary();
-        if (store instanceof InfinispanBinaryStore) {
-            return new InfinispanCacheStoreEntry((InfinispanBinaryStore)store, property);
-        } else if (store instanceof FileSystemBinaryStore) {
-            return new FileSystemBinaryStoreEntry((FileSystemBinaryStore)store, property);
-        } else if (store instanceof CompositeBinaryStore) {
-            final CompositeBinaryStore compositeBinaryStore = (CompositeBinaryStore) store;
-            final BlobStore binaryStoreContainingKey
-                    = compositeBinaryStore.findBinaryStoreContainingKey(binary.getKey());
-            return forProperty(binaryStoreContainingKey, property);
+        if (store instanceof MemoryNodeStore) {
+            return new MemoryCacheStoreEntry((MemoryNodeStore)store, property);
+        } else if (store instanceof DocumentNodeStore) {
+            return new DocumentCacheStoreEntry((DocumentNodeStore)store, property);
+        } else if (store instanceof SegmentNodeStore) {
+            return new SegmentCacheStoreEntry((SegmentNodeStore)store, property);
         } else {
             return new LocalBinaryStoreEntry(store, property);
         }
     }
 
-    private static Function<Repository,BlobStore> getBinaryStore ;
+    private static Function<Repository,NodeStore> getNodeStore = r ->
+            (NodeStore) Reflect.on(r).field("contentRepository").field("nodeStore");
 
-    private static BlobStore binaryStore(final Repository repo) {
-        final BlobStore store = getBinaryStore.apply(repo);
+    private static NodeStore nodeStore(final Repository repo) {
+        final NodeStore store = getNodeStore.apply(repo);
         assert store != null;
         return store;
     }

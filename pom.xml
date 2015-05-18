@@ -127,10 +127,18 @@
         <hazelcast.version>3.4.1</hazelcast.version>
         <ehcache.version>2.10.0</ehcache.version>
         <infinispan.veresion>7.2.1.Final</infinispan.veresion>
+        <directmemory.version>0.2</directmemory.version>
+        <imcache.version>0.0.5</imcache.version>
+        <chronicle-map.version>2.1.7</chronicle-map.version>
+        <mapdb.version>1.0.7</mapdb.version>
         <!-- Search Engine-->
         <lucene.version>4.10.4</lucene.version>
         <solr.version>4.10.4</solr.version>
         <elasticsearch.version>1.4.4</elasticsearch.version>
+        <!-- BigData -->
+        <hadoop.version></hadoop.version>
+        <spark.version></spark.version>
+        <ignite.version></ignite.version>
         <!-- Embed -->
         <flapdoodle.process.version>1.41.1</flapdoodle.process.version>
         <flapdoodle.mongo.version>1.47.2</flapdoodle.mongo.version>

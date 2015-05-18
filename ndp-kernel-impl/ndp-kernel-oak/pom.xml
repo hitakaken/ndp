@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.novbank.ndp.kernel</groupId>
-    <artifactId>ndp-kernel-jackrabbit-oak</artifactId>
+    <artifactId>ndp-kernel-oak</artifactId>
     <name>NovBank Data Platform :: Kernel :: Jackrabbit Oak</name>
     <description>NovBank Data Platform Kernel,  Provides the basic JCR abstractions on
         Apache Jackrabbit Oak at the heart of the NDP information architecture and machinery for manipulating them.</description>
@@ -27,6 +27,13 @@
             <dependency>
                 <groupId>com.novbank.ndp</groupId>
                 <artifactId>ndp-jcr-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.novbank.ndp</groupId>
+                <artifactId>ndp-graph-bom</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -52,10 +59,39 @@
             <artifactId>ndp-metrics</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.jackrabbit</groupId>
-            <artifactId>oak-core</artifactId>
+            <artifactId>oak-jcr</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>joor</artifactId>
+            <version>${joor.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.tinkerpop</groupId>
+            <artifactId>gremlin-core</artifactId>
+            <version>${tinkerpop3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tinkerpop</groupId>
+            <artifactId>gremlin-groovy</artifactId>
+            <version>${tinkerpop3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tinkerpop</groupId>
+            <artifactId>gremlin-driver</artifactId>
+            <version>${tinkerpop3.version}</version>
+        </dependency>
+
     </dependencies>
     
 </project>

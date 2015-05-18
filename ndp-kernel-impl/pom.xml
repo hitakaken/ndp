@@ -17,7 +17,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>ndp-kernel-jackrabbit-oak</module>
+        <module>ndp-kernel-oak</module>
         <!--<module>ndp-kernel-modeshape</module>
         <module>ndp-kernel-jena</module>
         <module>ndp-kernel-sesame</module>-->
