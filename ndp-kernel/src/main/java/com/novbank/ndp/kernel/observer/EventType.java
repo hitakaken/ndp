@@ -51,7 +51,7 @@ public enum EventType {
     }
 
     /**
-     * Get the Fedora event type for a JCR type
+     * Get the NDP event type for a JCR type
      *
      * @param i the integer value of a JCR type
      * @return EventType

@@ -4,8 +4,10 @@ import com.google.common.collect.Iterators;
 import com.novbank.ndp.kernel.exception.MalformedRdfException;
 import com.novbank.ndp.kernel.exception.RepositoryRuntimeException;
 import com.novbank.ndp.kernel.model.Binary;
-import com.novbank.ndp.kernel.model.NonRDFSourceDescript;
+import com.novbank.ndp.kernel.model.NonRDFSourceDescription;
 import com.novbank.ndp.kernel.model.Resource;
+import com.novbank.ndp.kernel.rdfsupport.RDFModel;
+import com.novbank.ndp.kernel.rdfsupport.RDFModelFactory;
 import com.novbank.ndp.kernel.rdfsupport.RDFStream;
 import com.novbank.ndp.kernel.util.convert.Converter;
 import com.novbank.ndp.kernel.util.convert.FunctionBasedConverter;
@@ -16,12 +18,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.function.Predicate;
 
+import static com.google.common.base.Throwables.propagate;
 import static com.novbank.ndp.kernel.util.jcr.JcrPropertyFunctions.*;
 import static com.novbank.ndp.kernel.vocabulary.Vocabularies.*;
-import static com.novbank.ndp.kernel.impl.model.NodeResourceConverter.nodeConverter;
+import static com.novbank.ndp.kernel.impl.service.convert.NodeResourceConverter.nodeConverter;
 
 /**
  * Created by CaoKe on 2015/5/16.
@@ -69,7 +74,7 @@ public class ResourceImpl implements Resource{
      * @return
      * @throws RepositoryException
      */
-    private Iterator<Iterator<Resource>> nodeToGoodChildren(final Node input) throws RepositoryException {
+    protected Iterator<Iterator<Resource>> nodeToGoodChildren(final Node input) throws RepositoryException {
         final Iterator<Node> allChildren = input.getNodes();
         return Seq.seq(allChildren).filter(nastyChildren.negate()).map(n -> {
             try {
@@ -85,7 +90,7 @@ public class ResourceImpl implements Resource{
     /**
      * Children for whom we will not generate triples.
      */
-    private static Predicate<Node> nastyChildren =
+    protected static Predicate<Node> nastyChildren =
             n -> {
                 LOGGER.trace("Testing child node {}", n);
                 try {
@@ -99,12 +104,12 @@ public class ResourceImpl implements Resource{
             };
 
 
-    private static final Converter<Resource, Resource> dataStreamToBinary
+    protected static final Converter<Resource, Resource> dataStreamToBinary
             = new FunctionBasedConverter<>(
-            r -> (r instanceof NonRDFSourceDescript) ?((NonRDFSourceDescript)r).getDescribedResource() : r ,
+            r -> (r instanceof NonRDFSourceDescription) ?((NonRDFSourceDescription)r).getDescribedResource() : r ,
             r -> (r instanceof Binary) ?((Binary)r).getDescription() : r );
 
-    private static final Converter<Node, Resource> nodeToObjectBinaryConverter
+    protected static final Converter<Node, Resource> nodeToObjectBinaryConverter
             = nodeConverter.andThen(dataStreamToBinary);
 
     @Override
@@ -183,7 +188,7 @@ public class ResourceImpl implements Resource{
         }
     }
 
-    private void createTombstone(final Node parent, final String path) throws RepositoryException {
+    protected void createTombstone(final Node parent, final String path) throws RepositoryException {
         JcrUtils.getOrAddNode(parent, path, NDP.Tombstone.abbr());
     }
 
@@ -243,35 +248,22 @@ public class ResourceImpl implements Resource{
      *     (java.lang.String, RdfStream)
      */
     @Override
-    public void updateProperties(final String sparqlUpdateStatement, final RDFStream originalTriples)
+    public void updateProperties(final RDFModelFactory factory, final String sparqlUpdateStatement, final RDFStream originalTriples)
             throws MalformedRdfException, AccessDeniedException {
-
-        final Model model = originalTriples.asModel();
-
-        final JcrPropertyStatementListener listener =
-                new JcrPropertyStatementListener(idTranslator, getSession());
-
-        model.register(listener);
-
-        final UpdateRequest request = create(sparqlUpdateStatement,
-                idTranslator.reverse().convert(this).toString());
-        model.setNsPrefixes(request.getPrefixMapping());
-        execute(request, model);
-        listener.assertNoExceptions();
+        final RDFModel model = factory.asModel(originalTriples);
+        model.executeUpdateRequest(sparqlUpdateStatement);
     }
 
     @Override
-    public RDFStream getTriples(final Iterable<Class<? extends RDFStream>> contexts) {
+    public RDFStream getTriples(final RDFModelFactory factory, final Iterable<Class<? extends RDFStream>> contexts) {
         final RDFStream stream = new RDFStream();
 
         for (final Class<? extends RDFStream> context : contexts) {
             try {
                 final Constructor<? extends RDFStream> declaredConstructor
-                        = context.getDeclaredConstructor(Resource.class, IdentifierConverter.class);
-
-                final RdfStream rdfStream = declaredConstructor.newInstance(this, idTranslator);
+                        = context.getDeclaredConstructor(Resource.class, RDFModelFactory.class);
+                final RDFStream rdfStream = declaredConstructor.newInstance(this, factory);
                 rdfStream.session(getSession());
-
                 stream.concat(rdfStream);
             } catch (final NoSuchMethodException |
                     InstantiationException |
@@ -295,31 +287,15 @@ public class ResourceImpl implements Resource{
      *     (org.fcrepo.kernel.identifiers.IdentifierConverter, com.hp.hpl.jena.rdf.model.Model)
      */
     @Override
-    public void replaceProperties(final Model inputModel, final RdfStream originalTriples) throws MalformedRdfException {
+    public void replaceProperties(final RDFModelFactory factory, final RDFModel inputModel,final RDFStream originalTriples) throws MalformedRdfException {
+        inputModel.replace(getSession(), originalTriples);
+    }
 
-        final RdfStream replacementStream = new RdfStream().namespaces(inputModel.getNsPrefixMap());
-
-        final GraphDifferencingIterator differencer =
-                new GraphDifferencingIterator(inputModel, originalTriples);
-
-        final StringBuilder exceptions = new StringBuilder();
+    protected Session getSession() {
         try {
-            new RdfRemover(idTranslator, getSession(), replacementStream
-                    .withThisContext(differencer)).consume();
-        } catch (final MalformedRdfException e) {
-            exceptions.append(e.getMessage());
-            exceptions.append("\n");
-        }
-
-        try {
-            new RdfAdder(idTranslator, getSession(), replacementStream
-                    .withThisContext(differencer.notCommon())).consume();
-        } catch (final MalformedRdfException e) {
-            exceptions.append(e.getMessage());
-        }
-
-        if (exceptions.length() > 0) {
-            throw new MalformedRdfException(exceptions.toString());
+            return getNode().getSession();
+        } catch (final RepositoryException e) {
+            throw new RepositoryRuntimeException(e);
         }
     }
 }

@@ -9,5 +9,5 @@ public interface NonRDFSource extends Resource {
      *
      * @return the description for this binary
      */
-    NonRDFSourceDescript getDescription();
+    NonRDFSourceDescription getDescription();
 }

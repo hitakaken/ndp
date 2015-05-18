@@ -18,8 +18,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.novbank</groupId>
+                <groupId>com.novbank.ndp</groupId>
                 <artifactId>ndp-kernel</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.novbank.ndp</groupId>
+                <artifactId>ndp-metrics</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

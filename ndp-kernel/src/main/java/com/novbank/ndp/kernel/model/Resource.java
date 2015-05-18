@@ -3,6 +3,8 @@ package com.novbank.ndp.kernel.model;
 import com.novbank.ndp.kernel.exception.MalformedRdfException;
 import com.novbank.ndp.kernel.exception.PathNotFoundRuntimeException;
 import com.novbank.ndp.kernel.exception.RepositoryRuntimeException;
+import com.novbank.ndp.kernel.rdfsupport.RDFModel;
+import com.novbank.ndp.kernel.rdfsupport.RDFModelFactory;
 import com.novbank.ndp.kernel.rdfsupport.RDFStream;
 import com.novbank.ndp.kernel.util.jcr.JcrTypesUtils;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -342,8 +344,8 @@ public interface Resource {
      * @param context the context
      * @return the rdf properties of this object using the provided context
      */
-    default RDFStream getTriples(Class<? extends RDFStream> context){
-        return getTriples(Collections.singleton(context));
+    default RDFStream getTriples(final RDFModelFactory factory, Class<? extends RDFStream> context){
+        return getTriples(factory, Collections.singleton(context));
     }
 
     /**
@@ -352,8 +354,8 @@ public interface Resource {
      * @param contexts the contexts
      * @return the rdf properties of this object using the provided context
      */
-    default RDFStream getTriples(Class<? extends RDFStream>... contexts){
-        return getTriples(Arrays.asList(contexts));
+    default RDFStream getTriples(final RDFModelFactory factory, Class<? extends RDFStream>... contexts){
+        return getTriples(factory, Arrays.asList(contexts));
     }
 
     /**
@@ -362,8 +364,8 @@ public interface Resource {
      * @param contexts the contexts
      * @return the rdf properties of this object using the provided context
      */
-    default RDFStream getTriples(final Iterator<Class<? extends RDFStream>> contexts){
-        return getTriples(() -> contexts);
+    default RDFStream getTriples(final RDFModelFactory factory, final Iterator<Class<? extends RDFStream>> contexts){
+        return getTriples(factory,() -> contexts);
     }
 
     /**
@@ -372,7 +374,7 @@ public interface Resource {
      * @param contexts the contexts
      * @return the rdf properties of this object using the provided context
      */
-    RDFStream getTriples(Iterable<Class<? extends RDFStream>> contexts);
+    RDFStream getTriples(final RDFModelFactory factory, Iterable<Class<? extends RDFStream>> contexts);
 
     /**
      * Update the provided properties with a SPARQL Update query. The updated
@@ -387,14 +389,14 @@ public interface Resource {
      * @throws MalformedRdfException if malformed rdf exception occurred
      * @throws AccessDeniedException if access denied in updating properties
      */
-    void updateProperties(final String sparqlUpdateStatement, final RDFStream originalTriples) throws MalformedRdfException, AccessDeniedException;
+    void updateProperties(final RDFModelFactory factory, final String sparqlUpdateStatement, final RDFStream originalTriples) throws MalformedRdfException, AccessDeniedException;
 
     /**
      * Replace the properties of this object with the properties from the given model
      *
-     * @param inputTriples the input triples
+     * @param inputModel the input triples
      * @param originalTriples the original triples
      * @throws MalformedRdfException if malformed rdf exception occurred
      */
-    void replaceProperties(final RDFStream inputTriples, final RDFStream originalTriples) throws MalformedRdfException;
+    void replaceProperties(final RDFModelFactory factory, final RDFModel inputModel, final RDFStream originalTriples) throws MalformedRdfException;
 }

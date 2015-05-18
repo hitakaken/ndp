@@ -43,7 +43,7 @@ public class NdpEvent {
      * Create a NdpEvent from an existing NdpEvent object
      * Note: Only the wrapped JCR event is passed on to the new object.
      *
-     * @param e the given fedora event
+     * @param e the given ndp event
      */
     public NdpEvent(final NdpEvent e) {
         checkArgument(e != null, "null cannot support a NDP Event!");

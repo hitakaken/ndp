@@ -24,6 +24,7 @@ public class NDP extends RDFVocabulary{
     public final RDFResource BlankNode;
 
     public final RDFProperty digest;
+    public final RDFProperty hint;
     public final RDFProperty metadata;
     public final RDFProperty versions;
 
@@ -39,6 +40,7 @@ public class NDP extends RDFVocabulary{
         BlankNode = addClass("BlankNode");
 
         digest = addProperty("digest");
+        hint = addProperty("hint");
         metadata = addProperty("metadata");
         versions = addProperty("versions");
         lock();
@@ -54,6 +56,7 @@ public class NDP extends RDFVocabulary{
     public static final RDFResource BLANK_NODE = INSTANCE.BlankNode;
 
     public static final RDFProperty DIGEST = INSTANCE.digest;
+    public static final RDFProperty HINT = INSTANCE.hint;
     public static final RDFProperty METADATA = INSTANCE.metadata;
     public static final RDFProperty VERSIONS = INSTANCE.versions;
 }

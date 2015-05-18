@@ -19,6 +19,7 @@
         <module>ndp-boms</module>
         <module>ndp-kernel</module>
         <module>ndp-kernel-impl</module>
+        <module>ndp-metrics</module>
     </modules>
 
     <properties>
@@ -170,7 +171,9 @@
         <opennlp.version>1.5.3</opennlp.version>
         <weka.version>3.6.12</weka.version>
         <!-- Web Container -->
-        <tomcat.version>8.0.20</tomcat.version>
+        <tomcat.version>8.0.22</tomcat.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <metrics.version>3.1.2</metrics.version>
         <!-- Security -->
         <shiro.version>1.2.3</shiro.version>
         <!-- Test -->

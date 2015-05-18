@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.util.jcr;
 
 import com.novbank.ndp.kernel.exception.RepositoryRuntimeException;
-import com.novbank.ndp.kernel.model.NonRDFSourceDescript;
+import com.novbank.ndp.kernel.model.NonRDFSourceDescription;
 import com.novbank.ndp.kernel.model.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,14 +37,14 @@ public class JcrTypesUtils {
             new AnyTypesPredicate(NDP.Container.abbr());
 
     /**
-     * Predicate for determining whether this {@link Node} is a {@link NonRDFSourceDescript}
+     * Predicate for determining whether this {@link Node} is a {@link NonRDFSourceDescription}
      */
     public static Predicate<Node> isNonRDFSourceDescription =
             new AnyTypesPredicate(NDP.NonRDFSourceDescription.abbr());
 
 
     /**
-     * Predicate for determining whether this {@link Node} is a Fedora
+     * Predicate for determining whether this {@link Node} is a NDP
      * binary.
      */
     public static Predicate<Node> isBinary =
@@ -57,7 +57,7 @@ public class JcrTypesUtils {
             f -> f.hasType(NT.frozenNode.abbr()) || f.getPath().contains(JCR.frozenNode.abbr());
 
     /**
-     * Predicate for determining whether this {@link Node} is a Fedora
+     * Predicate for determining whether this {@link Node} is a NDP
      * binary.
      */
     public static Predicate<Node> isBlankNode =
