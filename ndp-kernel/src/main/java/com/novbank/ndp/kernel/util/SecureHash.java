@@ -1,7 +1,6 @@
-package com.novbank.ndp.kernel.impl.util;
+package com.novbank.ndp.kernel.util;
 
 import com.novbank.ndp.kernel.exception.RepositoryRuntimeException;
-import com.novbank.ndp.kernel.util.HexUtils;
 import org.apache.commons.codec.binary.Hex;
 
 import java.io.*;

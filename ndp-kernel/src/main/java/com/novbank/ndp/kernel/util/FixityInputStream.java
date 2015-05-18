@@ -1,4 +1,4 @@
-package com.novbank.ndp.kernel.impl.util;
+package com.novbank.ndp.kernel.util;
 
 import org.apache.commons.io.input.CountingInputStream;
 

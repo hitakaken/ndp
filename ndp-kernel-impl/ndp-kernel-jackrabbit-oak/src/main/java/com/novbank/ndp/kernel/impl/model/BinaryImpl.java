@@ -7,7 +7,7 @@ import com.novbank.ndp.kernel.exception.InvalidChecksumException;
 import com.novbank.ndp.kernel.exception.RepositoryRuntimeException;
 import com.novbank.ndp.kernel.impl.rdf.FixityRDFContext;
 import com.novbank.ndp.kernel.impl.service.result.CacheEntryFactory;
-import com.novbank.ndp.kernel.impl.util.SecureHash;
+import com.novbank.ndp.kernel.util.SecureHash;
 import com.novbank.ndp.kernel.model.Binary;
 import com.novbank.ndp.kernel.model.NonRDFSourceDescription;
 import com.novbank.ndp.kernel.rdfsupport.RDFModelFactory;

@@ -1,7 +1,7 @@
 package com.novbank.ndp.kernel.impl.service.result;
 
 import com.google.common.collect.ImmutableSet;
-import com.novbank.ndp.kernel.impl.util.FixityInputStream;
+import com.novbank.ndp.kernel.util.FixityInputStream;
 import com.novbank.ndp.kernel.service.result.CacheEntry;
 import com.novbank.ndp.kernel.service.result.FixityResult;
 import com.novbank.ndp.kernel.util.ContentDigest;
