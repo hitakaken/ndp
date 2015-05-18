@@ -1,6 +1,7 @@
 package com.novbank.ndp.kernel.util.jcr;
 
 import com.novbank.ndp.kernel.exception.RepositoryRuntimeException;
+import com.novbank.ndp.kernel.model.NonRDFSourceDescript;
 import com.novbank.ndp.kernel.model.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +37,7 @@ public class JcrTypesUtils {
             new AnyTypesPredicate(NDP.Container.abbr());
 
     /**
-     * Predicate for determining whether this {@link Node} is a {@link com.novbank.ndp.kernel.model.NonRDFSourceDescription}
+     * Predicate for determining whether this {@link Node} is a {@link NonRDFSourceDescript}
      */
     public static Predicate<Node> isNonRDFSourceDescription =
             new AnyTypesPredicate(NDP.NonRDFSourceDescription.abbr());

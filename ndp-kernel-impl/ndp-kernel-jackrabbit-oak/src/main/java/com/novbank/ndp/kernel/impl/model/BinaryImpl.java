@@ -4,7 +4,7 @@ import com.novbank.ndp.kernel.exception.InvalidChecksumException;
 import com.novbank.ndp.kernel.exception.PathNotFoundRuntimeException;
 import com.novbank.ndp.kernel.exception.RepositoryRuntimeException;
 import com.novbank.ndp.kernel.model.Binary;
-import com.novbank.ndp.kernel.model.NonRDFSourceDescription;
+import com.novbank.ndp.kernel.model.NonRDFSourceDescript;
 import com.novbank.ndp.kernel.service.policy.StoragePolicyDecisionPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,9 +58,9 @@ public class BinaryImpl extends ResourceImpl implements Binary {
     }
 
     @Override
-    public NonRDFSourceDescription getDescription() {
+    public NonRDFSourceDescript getDescription() {
         try {
-            return new NonRDFSourceDescription(getNode().getParent());
+            return new NonRDFSourceDescript(getNode().getParent());
         } catch (final RepositoryException e) {
             throw new RepositoryRuntimeException(e);
         }

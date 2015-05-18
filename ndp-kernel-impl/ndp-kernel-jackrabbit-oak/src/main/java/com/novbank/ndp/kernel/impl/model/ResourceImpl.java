@@ -2,10 +2,9 @@ package com.novbank.ndp.kernel.impl.model;
 
 import com.google.common.collect.Iterators;
 import com.novbank.ndp.kernel.exception.MalformedRdfException;
-import com.novbank.ndp.kernel.exception.PathNotFoundRuntimeException;
 import com.novbank.ndp.kernel.exception.RepositoryRuntimeException;
 import com.novbank.ndp.kernel.model.Binary;
-import com.novbank.ndp.kernel.model.NonRDFSourceDescription;
+import com.novbank.ndp.kernel.model.NonRDFSourceDescript;
 import com.novbank.ndp.kernel.model.Resource;
 import com.novbank.ndp.kernel.rdfsupport.RDFStream;
 import com.novbank.ndp.kernel.util.convert.Converter;
@@ -102,7 +101,7 @@ public class ResourceImpl implements Resource{
 
     private static final Converter<Resource, Resource> dataStreamToBinary
             = new FunctionBasedConverter<>(
-            r -> (r instanceof NonRDFSourceDescription) ?((NonRDFSourceDescription)r).getDescribedResource() : r ,
+            r -> (r instanceof NonRDFSourceDescript) ?((NonRDFSourceDescript)r).getDescribedResource() : r ,
             r -> (r instanceof Binary) ?((Binary)r).getDescription() : r );
 
     private static final Converter<Node, Resource> nodeToObjectBinaryConverter
