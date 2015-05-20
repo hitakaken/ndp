@@ -61,6 +61,7 @@
         <!-- Google -->
         <google.guava.version>18.0</google.guava.version>
         <google.guice.version>4.0</google.guice.version>
+        <google.findbugs.version>3.0.0</google.findbugs.version>
         <!-- Spring Projects -->
         <spring.version>4.1.6.RELEASE</spring.version>
         <spring.batch.version>3.0.3.RELEASE</spring.batch.version>
@@ -136,9 +137,12 @@
         <solr.version>4.10.4</solr.version>
         <elasticsearch.version>1.4.4</elasticsearch.version>
         <!-- BigData -->
-        <hadoop.version></hadoop.version>
-        <spark.version></spark.version>
-        <ignite.version></ignite.version>
+        <hadoop.version>2.6.0</hadoop.version>
+        <hbase.version>1.1.0</hbase.version>
+        <hive.version>1.1.0</hive.version>
+        <spark.version>1.3.1</spark.version>
+        <giraph.version>1.1.0-hadoop2</giraph.version>
+        <ignite.version>1.0.0</ignite.version>
         <!-- Embed -->
         <flapdoodle.process.version>1.41.1</flapdoodle.process.version>
         <flapdoodle.mongo.version>1.47.2</flapdoodle.mongo.version>
@@ -220,11 +224,11 @@
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.testng</groupId>

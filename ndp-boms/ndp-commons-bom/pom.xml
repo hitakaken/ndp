@@ -80,6 +80,12 @@
                 <artifactId>guice</artifactId>
                 <version>${google.guice.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${google.findbugs.version}</version>
+                <optional>true</optional>
+            </dependency>
 
             <!-- Spring Framework -->
             <dependency>
