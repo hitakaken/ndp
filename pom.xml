@@ -91,6 +91,7 @@
         <jena.version>2.13.0</jena.version>
         <jena.ext.version>1.1.2</jena.ext.version>
         <sesame.version>2.8.3</sesame.version>
+        <jsonld.version>0.5.1</jsonld.version>
         <!-- Database Tools -->
         <querydsl.version>3.6.3</querydsl.version>
         <jooq.version>3.6.0</jooq.version>
@@ -104,6 +105,7 @@
         <hibernate-jpa21.version>1.0.0.Final</hibernate-jpa21.version>
         <HikariCP.version>2.3.5</HikariCP.version>
         <cqengine.version>2.0.2</cqengine.version>
+        <jsqlparser.version>0.9.3</jsqlparser.version>
         <!-- RDBMS/JDBC -->
         <derby.version>10.11.1.1</derby.version>
         <hsqldb.version>2.3.2</hsqldb.version>
@@ -140,6 +142,8 @@
         <hadoop.version>2.6.0</hadoop.version>
         <hbase.version>1.1.0</hbase.version>
         <hive.version>1.1.0</hive.version>
+        <pig.version>0.14.0</pig.version>
+        <parquet.version>1.6.0</parquet.version>
         <spark.version>1.3.1</spark.version>
         <giraph.version>1.1.0-hadoop2</giraph.version>
         <ignite.version>1.0.0</ignite.version>

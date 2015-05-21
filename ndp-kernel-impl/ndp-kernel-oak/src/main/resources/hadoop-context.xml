@@ -8,5 +8,7 @@
     <hdp:configuration id="hadoopConfiguration">
         fs.defaultFS=hdfs://SHLIB-534:9000
     </hdp:configuration>
-
+    <hdp:file-system id="hdfs" configuration-ref="hadoopConfiguration" user="xtwh" />
+    <hdp:resource-loader id="loader" file-system-ref="hdfs"  />
+    <!--<hdp:resource-loader-registrar loader-ref="loader" />-->
 </beans>
