@@ -26,7 +26,7 @@ public class DatasetConfigTest {
     private org.apache.hadoop.conf.Configuration conf;
 
     @Autowired
-    private FileSystem hdfs;
+    private FileSystem fs;
 
     @Autowired
     @Qualifier("loader")
@@ -52,7 +52,7 @@ public class DatasetConfigTest {
         for (FileStatus file : files) {
 
         }*/
-        Arrays.asList(hdfs.listStatus(new Path("/"))).forEach(f -> System.out.println(f.getPath()));
+        Arrays.asList(fs.listStatus(new Path("/"))).forEach(f -> System.out.println(f.getPath()));
         System.out.println("");
         Arrays.asList(loader.getResources("/*")).forEach(r -> System.out.println(r.getFilename()));
 

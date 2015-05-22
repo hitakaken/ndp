@@ -1,0 +1,10 @@
+{
+ "namespace": "com.novbank.ndp.kernel.impl.model.avro",
+ "type": "record",
+ "name": "Document",
+ "fields": [
+     {"name": "name", "type": "string"},
+     {"name": "resource",  "type": ["string", "null"]},
+     {"name": "ip", "type": ["string", "null"]}
+ ]
+}
