@@ -146,6 +146,7 @@
         <pig.version>0.14.0</pig.version>
         <parquet.version>1.7.0</parquet.version>
         <parquet.format.version>2.3.0-incubating</parquet.format.version>
+        <kite.version>1.0.0</kite.version>
         <spark.version>1.3.1</spark.version>
         <giraph.version>1.1.0-hadoop2</giraph.version>
         <ignite.version>1.0.0</ignite.version>
@@ -159,7 +160,7 @@
         <!-- Database End -->
         <!-- Data Format/Parser Start -->
         <!-- XML -->
-        <jackson.version>2.5.2</jackson.version>
+        <jackson.version>2.5.3</jackson.version>
         <woodstox.version>4.4.1</woodstox.version>
         <xalan.version>2.7.2</xalan.version>
         <staxmate.version>2.2.1</staxmate.version>

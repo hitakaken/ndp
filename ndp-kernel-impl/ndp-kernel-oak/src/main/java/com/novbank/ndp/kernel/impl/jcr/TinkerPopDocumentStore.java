@@ -1,6 +1,7 @@
 package com.novbank.ndp.kernel.impl.jcr;
 
 import com.google.common.collect.ImmutableMap;
+import org.apache.avro.generic.GenericData;
 import org.apache.jackrabbit.oak.cache.CacheStats;
 import org.apache.jackrabbit.oak.plugins.document.*;
 import org.apache.jackrabbit.oak.plugins.document.cache.CacheInvalidationStats;

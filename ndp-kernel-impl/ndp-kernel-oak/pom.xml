@@ -69,6 +69,11 @@
             <artifactId>avro</artifactId>
             <version>${avro.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-avro</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.jackrabbit</groupId>
@@ -111,6 +116,11 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-yarn-core</artifactId>
             <version>${spring.data.hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kitesdk</groupId>
+            <artifactId>kite-data-core</artifactId>
+            <version>${kite.version}</version>
         </dependency>
 
         <dependency>
