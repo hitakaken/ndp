@@ -83,7 +83,7 @@
         <!-- Database Start -->
         <!-- JCR -->
         <jcr.version>2.0</jcr.version>
-        <jackrabbit.version>2.10.0</jackrabbit.version>
+        <jackrabbit.version>2.10.1</jackrabbit.version>
         <oak.version>1.2.2</oak.version>
         <modeshape.version>4.2.0.Final</modeshape.version>
         <!-- RDF -->
@@ -198,6 +198,7 @@
         <tomcat.version>8.0.22</tomcat.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <metrics.version>3.1.2</metrics.version>
+        <dropwizard.version>0.8.1</dropwizard.version>
         <!-- Security -->
         <shiro.version>1.2.3</shiro.version>
         <!-- Test -->
