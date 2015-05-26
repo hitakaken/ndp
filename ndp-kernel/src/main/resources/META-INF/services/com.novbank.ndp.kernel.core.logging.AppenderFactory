@@ -1,0 +1,3 @@
+com.novbank.ndp.kernel.core.logging.ConsoleAppenderFactory
+com.novbank.ndp.kernel.core.logging.FileAppenderFactory
+com.novbank.ndp.kernel.core.logging.SyslogAppenderFactory
