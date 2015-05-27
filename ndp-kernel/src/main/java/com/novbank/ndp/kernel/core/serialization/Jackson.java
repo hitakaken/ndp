@@ -44,8 +44,8 @@ public class Jackson {
     }
 
     private static ObjectMapper configure(ObjectMapper mapper) {
-        //mapper.registerModule(new Hibernate4Module());
-        //mapper.registerModule(new HppcModule());
+        mapper.registerModule(new Hibernate4Module());
+        mapper.registerModule(new HppcModule());
         mapper.registerModule(new Jdk7Module());
         mapper.registerModule(new Jdk8Module());
         mapper.registerModule(new JodaModule());
