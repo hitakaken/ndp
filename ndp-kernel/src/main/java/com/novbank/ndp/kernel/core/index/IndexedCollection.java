@@ -8,5 +8,7 @@ import java.util.Collection;
  * Created by ken on 15-5-27.
  */
 public interface IndexedCollection<T> extends Collection<T>{
-
+    enum Status{
+        INSERT, UPDATE, DELETE
+    }
 }

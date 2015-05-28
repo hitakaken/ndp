@@ -3,6 +3,7 @@ package com.novbank.ndp.kernel.core.event;
 import com.novbank.ndp.kernel.core.exception.PropertyNameInvalidException;
 
 import java.util.Collection;
+import java.util.Objects;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -11,7 +12,31 @@ import static com.google.common.base.Preconditions.checkNotNull;
  *
  * Created by ken on 15-5-27.
  */
-public interface PropertyContainer extends EventSource{
+public interface PropertyContainer extends ChangeInLocationEventSource,ChangeEventSource {
+    /**
+     * 是否新建
+     *
+     * @return
+     */
+    boolean isNewly();
+
+    /**
+     * 是否变更
+     *
+     * @return
+     */
+    boolean changed();
+
+    /**
+     * 变更
+     */
+    void makeChange();
+
+    /**
+     * 清空变更
+     */
+    void clearChange();
+
     /**
      * @return 属性列表
      */
@@ -41,9 +66,13 @@ public interface PropertyContainer extends EventSource{
 
         Object oldValue = getProperty(key);
 
+        if(Objects.equals(oldValue,newValue)) return;
+
         if(fireBeforePropertyChange(key, oldValue, newValue)) {
             doSetProperty(key, newValue);
-            fireAfterPropertyChange(key,oldValue, getProperty(key));
+            makeChange();
+            fireAfterPropertyChange(key, oldValue, getProperty(key));
+            fireChangeEvent(key);
             fireChangeEvent();
         }
     }

@@ -55,10 +55,5 @@ public interface EventSource {
         listeners.forEach(this::removeListener);
     }
 
-    /**
-     * 处理变更
-     */
-    default void fireChangeEvent(){
-        listeners().forEach(listener -> listener.handleChangeEvent(this));
-    }
+
 }

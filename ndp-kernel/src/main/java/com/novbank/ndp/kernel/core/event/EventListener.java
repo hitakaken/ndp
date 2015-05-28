@@ -10,7 +10,7 @@ public interface EventListener {
      * @param source
      * @return 监听器是否合适
      */
-    default boolean beforeMonitor(EventSource source){
+    default boolean beforeMonitor(Object source){
         return true;
     }
 
@@ -20,7 +20,7 @@ public interface EventListener {
      * @param source
      * @return
      */
-    default boolean afterMonitor(EventSource source){
+    default boolean afterMonitor(Object source){
         return true;
     }
 
@@ -30,7 +30,7 @@ public interface EventListener {
      * @param source
      * @return
      */
-    default boolean beforeLeave(EventSource source){
+    default boolean beforeLeave(Object source){
         return true;
     }
 
@@ -40,14 +40,7 @@ public interface EventListener {
      * @param source
      * @return
      */
-    default boolean afterLeave(EventSource source){
+    default boolean afterLeave(Object source){
         return true;
     }
-
-    /**
-     * 处理变更事件
-     *
-     * @param eventSource
-     */
-    default void handleChangeEvent(EventSource eventSource){}
 }
