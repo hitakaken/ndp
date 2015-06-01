@@ -17,6 +17,7 @@
 
     <modules>
         <module>ndp-boms</module>
+        <module>ndp-core</module>
         <module>ndp-kernel</module>
         <module>ndp-kernel-impl</module>
         <module>ndp-metrics</module>
