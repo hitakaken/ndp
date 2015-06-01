@@ -1,5 +1,7 @@
 package com.novbank.ndp.core.record;
 
+import com.novbank.ndp.core.util.IteratorUtils;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.beans.VetoableChangeListener;
@@ -61,7 +63,9 @@ public interface PropertyContainer {
      * @param <V> 属性值
      * @return 属性列表
      */
-    <V> Iterator<V> values(final String... propertyKeys);
+    default <V> Iterator<V> values(final String... propertyKeys){
+        return IteratorUtils.map(this.<V>properties(propertyKeys), property -> property.value());
+    }
 
     /**
      * @param propertyKeys 属性名

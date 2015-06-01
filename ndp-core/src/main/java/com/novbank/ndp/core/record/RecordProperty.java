@@ -6,7 +6,7 @@ package com.novbank.ndp.core.record;
 public interface RecordProperty<V> extends Property<V>, PropertyContainer {
     String DEFAULT_LABEL = "recordProperty";
     enum Cardinality {
-        single, list, set
+        SINGLE, LIST, SET, MAP
     }
 
     class Exceptions {
