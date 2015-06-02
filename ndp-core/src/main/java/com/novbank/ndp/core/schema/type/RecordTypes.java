@@ -31,7 +31,31 @@ public class RecordTypes {
         }
     }
 
-    public static class NullType extends AbstractRecordType{
+    private static class StringType extends AbstractRecordType{
+
+    }
+
+    private static class BytesType extends AbstractRecordType{
+
+    }
+
+    private static class IntType extends AbstractRecordType{
+
+    }
+
+    private static class LongType extends AbstractRecordType{
+
+    }
+
+    private static class FloatType extends AbstractRecordType{
+
+    }
+
+    private static class DoubleType extends AbstractRecordType{
+
+    }
+
+    private static class NullType extends AbstractRecordType{
         public NullType() {
             super(NULL.name().toLowerCase(), Namespaces.JAVA, NULL, null, Schema.create(Schema.Type.NULL), null);
         }
@@ -48,6 +72,27 @@ public class RecordTypes {
             return otherType.asPojoClass() == null;
         }
     }
+
+    private static abstract class NamedType{
+
+    }
+
+    private static class EnumType{
+
+    }
+
+    private static class ArrayType{
+
+    }
+
+    private static class MapType{
+
+    }
+
+    private static class UnionType{
+
+    }
+
 
 
 }
