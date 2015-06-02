@@ -1,4 +1,4 @@
-package com.novbank.ndp.core.util;
+package com.novbank.ndp.core.util.iterator;
 
 import java.io.Serializable;
 import java.util.Arrays;

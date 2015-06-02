@@ -1,13 +1,25 @@
-package com.novbank.ndp.core.record;
+package com.novbank.ndp.core.schema;
+
+import com.novbank.ndp.core.schema.namespace.NamespaceSupport;
+import com.novbank.ndp.core.schema.type.RecordType;
 
 /**
  * Created by hp on 2015/6/1.
  */
-public interface RecordProperty<V> extends Property<V>, PropertyContainer {
-    String DEFAULT_LABEL = "recordProperty";
-    enum Cardinality {
-        SINGLE, LIST, SET, MAP
-    }
+public interface RecordProperty extends NamespaceSupport {
+    String DEFAULT_LABEL = "property";
+
+    String getDisplay();
+
+    String getHint();
+
+    RecordType getType();
+
+    Object getValue(Object thisObj);
+
+    boolean validate(Object thisObj, Object newValue);
+
+    void setValue(Object thisObj, Object newValue);
 
     class Exceptions {
         private Exceptions() {
