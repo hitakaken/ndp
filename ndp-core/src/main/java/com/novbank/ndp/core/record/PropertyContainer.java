@@ -1,6 +1,6 @@
 package com.novbank.ndp.core.record;
 
-import com.novbank.ndp.core.util.IteratorUtils;
+import com.novbank.ndp.core.util.iterator.IteratorUtils;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

@@ -23,32 +23,8 @@ public class Constants {
         return (Arrays.binarySearch(JAVA_KEYWORDS, keyword) >= 0);
     }
 
-    private static final Set<String> SCHEMA_RESERVED = new HashSet<String>();
-    static {
-        Collections.addAll(SCHEMA_RESERVED,
-                "doc", "fields", "items", "name", "namespace",
-                "size", "symbols", "values", "type", "aliases");
-    }
-
-    private static final Set<String> MESSAGE_RESERVED = new HashSet<String>();
-    static {
-        Collections.addAll(MESSAGE_RESERVED,
-                "doc", "response","request", "errors", "one-way");
-    }
-
-    private static final Set<String> PROTOCOL_RESERVED = new HashSet<String>();
-    static {
-        Collections.addAll(PROTOCOL_RESERVED,
-                "namespace", "protocol", "doc",
-                "messages", "types", "errors");
-    }
-
-    private static final Set<String> FIELD_RESERVED = new HashSet<String>();
-    static {
-        Collections.addAll(FIELD_RESERVED,
-                "default","doc","name","order","type","aliases");
-    }
-
     public static final String EMPTY_PROPERTY = "p[empty]";
+
+
 
 }

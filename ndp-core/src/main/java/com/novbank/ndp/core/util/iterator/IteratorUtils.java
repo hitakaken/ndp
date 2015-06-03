@@ -1,9 +1,4 @@
-package com.novbank.ndp.core.util;
-
-import com.novbank.ndp.core.util.iterator.ArrayIterator;
-import com.novbank.ndp.core.util.iterator.DoubleIterator;
-import com.novbank.ndp.core.util.iterator.MultiIterator;
-import com.novbank.ndp.core.util.iterator.SingleIterator;
+package com.novbank.ndp.core.util.iterator;
 
 import java.util.*;
 import java.util.function.BiFunction;

@@ -28,7 +28,7 @@ public abstract class AbstractRecordProperty implements RecordProperty {
         this.name = name;
     }
 
-    @Override
+
     public Namespace getNamespace() {
         return namespace;
     }
@@ -37,7 +37,6 @@ public abstract class AbstractRecordProperty implements RecordProperty {
         this.namespace = namespace;
     }
 
-    @Override
     public String getName() {
         return name;
     }

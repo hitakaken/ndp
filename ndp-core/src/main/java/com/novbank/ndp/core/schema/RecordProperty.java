@@ -6,7 +6,7 @@ import com.novbank.ndp.core.schema.type.RecordType;
 /**
  * Created by hp on 2015/6/1.
  */
-public interface RecordProperty extends NamespaceSupport {
+public interface RecordProperty  {
     String DEFAULT_LABEL = "property";
 
     String getDisplay();

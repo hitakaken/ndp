@@ -29,9 +29,9 @@ public abstract class AbstractRecordClass extends AbstractPropertyContainer impl
         this.namespace = namespace;
         this.name = name;
         this.properties = Maps.newHashMap();
-        if(properties!=null && !properties.isEmpty())
+        /*if(properties!=null && !properties.isEmpty())
             for(RecordProperty property:properties)
-                this.properties.put(property.name(),new SimpleProperty<>(this,property.name(),property));
+                this.properties.put(property.name(),new SimpleProperty<>(this,property.name(),property));*/
     }
 
     @Override
@@ -73,8 +73,8 @@ public abstract class AbstractRecordClass extends AbstractPropertyContainer impl
     }
 
     protected <V> Property<RecordProperty> wrap(V value){
-        if(value instanceof RecordProperty)
-            return new SimpleProperty<>(this,((RecordProperty) value).name(),((RecordProperty) value));
+       /* if(value instanceof RecordProperty)
+            return new SimpleProperty<>(this,((RecordProperty) value).name(),((RecordProperty) value));*/
         return null;
     }
 
@@ -92,9 +92,9 @@ public abstract class AbstractRecordClass extends AbstractPropertyContainer impl
     public <V> Iterator<? extends Property<V>> properties(String... propertyKeys) {
         if (null == properties)
             return Collections.emptyIterator();
-        return (Iterator<? extends Property<V>>) properties.entrySet().stream().filter(entry ->
+        return null;/*properties.entrySet().stream().filter(entry ->
                 PropertyContainerHelper.keyExists(entry.getKey(), propertyKeys))
                 .map(Map.Entry::getValue)
-                .iterator();
+                .iterator();*/
     }
 }

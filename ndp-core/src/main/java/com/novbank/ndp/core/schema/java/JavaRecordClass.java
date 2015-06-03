@@ -11,9 +11,11 @@ import com.novbank.ndp.core.schema.*;
 import com.novbank.ndp.core.schema.namespace.Namespace;
 import com.novbank.ndp.core.schema.namespace.NamespaceContainer;
 import com.novbank.ndp.core.schema.namespace.SimpleNamespaceContainer;
+import com.novbank.ndp.core.schema.type.RecordType;
 import com.novbank.ndp.core.util.NamespaceUtils;
 import javassist.util.proxy.Proxy;
 import javassist.util.proxy.ProxyFactory;
+import org.apache.avro.Schema;
 
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -146,4 +148,23 @@ public class JavaRecordClass extends AbstractRecordClass {
     }
 
 
+    @Override
+    public Namespace namespace() {
+        return null;
+    }
+
+    @Override
+    public String name() {
+        return null;
+    }
+
+    @Override
+    public Type type() {
+        return null;
+    }
+
+    @Override
+    public Schema asAvro() {
+        return null;
+    }
 }
