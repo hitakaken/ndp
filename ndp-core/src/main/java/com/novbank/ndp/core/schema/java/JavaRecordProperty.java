@@ -1,8 +1,8 @@
 package com.novbank.ndp.core.schema.java;
 
-import com.novbank.ndp.core.schema.AbstractRecordProperty;
+import com.novbank.ndp.core.schema.record.AbstractRecordProperty;
 import com.novbank.ndp.core.schema.namespace.Namespace;
-import com.novbank.ndp.core.schema.RecordClass;
+import com.novbank.ndp.core.schema.record.RecordClass;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package com.novbank.ndp.core.schema;
+package com.novbank.ndp.core.schema.record;
 
 import com.novbank.ndp.core.schema.namespace.NamespaceSupport;
 import com.novbank.ndp.core.schema.type.RecordType;

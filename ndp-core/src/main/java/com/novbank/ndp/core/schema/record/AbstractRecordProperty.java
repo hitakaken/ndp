@@ -1,9 +1,8 @@
-package com.novbank.ndp.core.schema;
+package com.novbank.ndp.core.schema.record;
 
 import com.novbank.ndp.core.schema.namespace.Namespace;
 import com.novbank.ndp.core.schema.type.RecordType;
 
-import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Function;

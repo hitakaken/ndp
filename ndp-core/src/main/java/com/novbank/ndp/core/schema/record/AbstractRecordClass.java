@@ -1,10 +1,9 @@
-package com.novbank.ndp.core.schema;
+package com.novbank.ndp.core.schema.record;
 
 import com.google.common.collect.Maps;
 import com.novbank.ndp.core.helper.reflect.PropertyContainerHelper;
 import com.novbank.ndp.core.record.AbstractPropertyContainer;
 import com.novbank.ndp.core.record.Property;
-import com.novbank.ndp.core.record.SimpleProperty;
 import com.novbank.ndp.core.schema.namespace.Namespace;
 
 import java.lang.reflect.Method;
