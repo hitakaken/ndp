@@ -152,6 +152,7 @@ public class DefaultNamespaceManager implements NamespaceManager {
         else {
             //当前 Rdf Url对应的命名空间
             String existing = findNamespaceByUrl(url);
+            //如果未映射，则建立映射
             if (StringUtils.isEmpty(existing)){
                 urls.get(url).stream().forEach(t -> {
                     spaces.remove(StringUtils.EMPTY,t);
@@ -174,14 +175,27 @@ public class DefaultNamespaceManager implements NamespaceManager {
             throw Exceptions.invalidNamespace(space);
         else if(validateAbbreviation(abbreviation))
             throw Exceptions.invalidAbbreviation(abbreviation);
-        else if(spaces.containsKey(space) && abbreviations.containsKey(abbreviation)){
-
-        } else if(spaces.containsKey(space)){
-
-        } else if(abbreviations.containsKey(abbreviation)){
-
-        } else
+        else if(!abbreviations.containsKey(abbreviation))
+            //如果 Rdf Url 不存在，则直接注册
             register(new Triplet<>(space,StringUtils.EMPTY,abbreviation));
+        else {
+            //当前 Rdf Url对应的命名空间
+            String existing = findNamespaceByAbbreviation(abbreviation);
+            //如果未映射，则建立映射
+            if (StringUtils.isEmpty(existing)){
+                abbreviations.get(abbreviation).stream().forEach(t -> {
+                    spaces.remove(StringUtils.EMPTY,t);
+                    t.setAt0(space);
+                    spaces.put(space, t);
+                });
+            }else if(StringUtils.equals(existing,space))
+                //命名空间相同则抛出已存在异常
+                throw Exceptions.union(Exceptions.alreadyExistsNamespace(space),Exceptions.alreadyExistsAbbreviation(abbreviation));
+            else
+                //命名空间不同则抛出冲突异常
+            //TODO
+                throw Exceptions.conflictUrl(space,abbreviation);
+        }
     }
 
     protected void registerUrlAndAbbreviation(String url, String abbreviation) {
@@ -364,6 +378,10 @@ public class DefaultNamespaceManager implements NamespaceManager {
         }
 
         public static IllegalArgumentException conflictUrl(String space , String url){
+            return new IllegalArgumentException(String.format("Url %s is conflict in Namespace %s.",url,space));
+        }
+
+        public static IllegalArgumentException conflictAbbreviation(String space , String url){
             return new IllegalArgumentException(String.format("Url %s is conflict in Namespace %s.",url,space));
         }
 
