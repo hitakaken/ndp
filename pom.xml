@@ -54,7 +54,7 @@
         <commons-io.version>2.4</commons-io.version>
         <commons-pool.version>1.6</commons-pool.version>
         <commons-pool2.version>2.3</commons-pool2.version>
-        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-math3.version>3.3</commons-math3.version>
         <commons-net.version>3.3</commons-net.version>
@@ -199,7 +199,7 @@
         <weka.version>3.6.12</weka.version>
         <!-- Web Container -->
         <tomcat.version>8.0.22</tomcat.version>
-        <jetty.version>9.2.10.v20150310</jetty.version>
+        <jetty.version>9.2.11.v20150529</jetty.version>
         <jersey.version>2.17</jersey.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>

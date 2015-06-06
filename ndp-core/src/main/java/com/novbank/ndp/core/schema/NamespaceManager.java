@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * 命名空间集合
+ * 命名空间管理器
  * 命名空间： Triplet space,url,prefix
  * space 形如：x.y(.z)
  * url  形如：http(s)://x.y(.z)/*
@@ -17,7 +17,7 @@ import java.util.List;
  *
  * Created by hp on 2015/6/5.
  */
-public interface NamespaceManager extends Collection<String> {
+public interface NamespaceManager extends Iterable<Triplet<String,String,String>>{
     /**
      * @param space     命名空间
      * @param url       RDF url
@@ -60,4 +60,29 @@ public interface NamespaceManager extends Collection<String> {
      * @return  对应的前缀
      */
     Iterable<String> findAbbreviations(String unique);
+
+    /**
+     * @return 记录条数
+     */
+    int size();
+
+    /**
+     * @return 命名空间列表
+     */
+    Collection<String> spaces();
+
+    /**
+     * @return url列表
+     */
+    Collection<String> urls();
+
+    /**
+     * @return 缩写列表
+     */
+    Collection<String> abbreviations();
+
+    /**
+     * 清空
+     */
+    void clear();
 }
