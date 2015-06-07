@@ -31,4 +31,16 @@ public class Constants {
 
     public static final String DIGITS = "0123456789";
 
+    public static final String FIELD_NAME = "name";
+    public static final String FIELD_NAMESPACE = "namespace";
+    public static final String FIELD_MULTIPLE = "multiple";
+    public static final String FIELD_SORTABLE = "sortable";
+    public static final String FIELD_DUPLICATABLE = "duplicatable";
+    public static final String FIELD_LABELING = "labeling";
+    public static final String FIELD_DOMAIN = "domain";
+    public static final String FIELD_RANGE = "range";
+    public static final String FIELD_LABELS = "labels";
+    public static final String FIELD_PROPERTIES = "properties";
+    public static final String FIELD_EXTENSION = "ext";
+
 }

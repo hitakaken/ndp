@@ -2,6 +2,7 @@ package com.novbank.ndp.core.schema.define;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,14 +16,33 @@ import java.util.List;
  */
 public interface RecordDefinition {
     /**
+     * @return 完整记录类型名称
+     */
+    default String fullName() {
+        return StringUtils.isBlank(namespace()) ? name() : namespace()+"."+name();
+    }
+
+    /**
      * @return 命名空间
      */
     String namespace();
 
     /**
+     * @param namespace 命名空间
+     * @return 链式定义
+     */
+    RecordDefinition namespace(String namespace);
+
+    /**
      * @return 记录类型
      */
     String name();
+
+    /**
+     * @param name 记录定义名
+     * @return 链式定义
+     */
+    RecordDefinition name(String name);
 
     /**
      * @return 属性定义列表
@@ -42,7 +62,14 @@ public interface RecordDefinition {
     PropertyDefinition property(String key);
 
     /**
+     * @param properties 待添加属性列表
+     * @return 链式定义
+     */
+    RecordDefinition addProperties(Iterable<PropertyDefinition> properties);
+
+    /**
      * @param property 待添加属性
+     * @return 链式定义
      */
     RecordDefinition addProperty(PropertyDefinition property);
 

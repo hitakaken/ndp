@@ -1,5 +1,7 @@
 package com.novbank.ndp.core.schema;
 
+import com.novbank.ndp.core.schema.define.PropertyDefinition;
+import com.novbank.ndp.core.schema.define.RecordDefinition;
 import org.apache.avro.Schema;
 
 import java.io.File;
@@ -14,31 +16,77 @@ import java.util.List;
  * Created by hp on 2015/6/5.
  */
 public interface SchemaManager {
+    /**
+     * @return 通用类型对应的Avro Schemas
+     */
     List<Schema> genericRecognizedTypes();
 
-    void addSchema(String fullName, Schema schema) throws IllegalArgumentException;
+    /**
+     * @param fullName  Schema 全名
+     * @return 对应的Avro Schema
+     */
+    Schema getAvroSchema(String fullName);
 
-    void removeSchema(String fullName);
+    /**
+     * @param namespace 命名空间
+     * @param name 名称
+     * @return 对应的Avro Schema
+     */
+    Schema getAvroSchema(String namespace, String name);
 
-    Schema parseSchema(String schemaString);
+    /**
+     * @param namespace
+     * @param name
+     * @param schema
+     * @return 链式管理器
+     */
+    SchemaManager addAvroSchema(String namespace, String name, Schema schema);
 
-    Schema parseSchema(InputStream in)throws IOException;
+    /**
+     * @param fullName
+     * @param schema
+     * @return 链式管理器
+     */
+    SchemaManager addAvroSchema(String fullName, Schema schema);
 
-    Schema parseSchema(File file)throws IOException;
+    /**
+     * @param namespace 命名空间
+     * @param name 属性名
+     * @return 是否包含符合条件的全局属性（RDF）
+     */
+    boolean hasPropertyDefinition(String namespace, String name);
 
-    void addProperty(String namespaceOrEmpty, String name, Iterable<String> domain, Iterable<String> range, boolean multiple, boolean sortable,boolean labeling);
+    /**
+     * @param namespace 命名空间
+     * @param name 属性名
+     * @return 获取符合条件的全局属性（RDF）
+     */
+    PropertyDefinition getOrCreatePropertyDefinition(String namespace, String name);
 
-    void removeProperty(String namespaceOrEmpty, String name);
+    /**
+     * @param propertyDefinition
+     * @return 链式管理器
+     */
+    SchemaManager addPropertyDefinition(PropertyDefinition propertyDefinition);
 
-    void removePropertyFromDomain(String namespaceOrEmpty, String name, String domain);
+    /**
+     * @param fullName 记录类型全名
+     * @return 记录定义
+     */
+    RecordDefinition getOrCreateRecordDefinition(String fullName);
 
-    Iterable<Schema> getPropertiesByDomain(String domain);
+    /**
+     * @param namespace 命名空间
+     * @param name 记录名称
+     * @return 记录定义
+     */
+    RecordDefinition getOrCreateRecordDefinition(String namespace, String name);
 
-    Schema getPropertyStyleSchema(String fullName);
+    /**
+     * @param recordDefinition
+     * @return 链式管理器
+     */
+    SchemaManager addRecordDefinition(RecordDefinition recordDefinition);
 
-    Schema getSchema(String fullName);
 
-    void parseSchema(Class pojoClass);
-
-    void removeSchema(Class pojoClass);
 }

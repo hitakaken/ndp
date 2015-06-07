@@ -7,9 +7,11 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
+ * 定义相同的属性组
+ *
  * Created by hp on 2015/6/7.
  */
-public interface PropertyGroup {
+public interface PropertyGroup extends List<Property>{
     /**
      * @return 属性定义
      */
@@ -28,7 +30,11 @@ public interface PropertyGroup {
     /**
      * @return 是否单例
      */
-    boolean isSingle();
+    default boolean isSingle(){
+        return this.size() <= 1;
+    }
+
+    Property single();
 
     List<Property> toList();
     List<Property> toList(Predicate<Property> filter);

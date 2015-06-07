@@ -13,44 +13,45 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.novbank.ndp.core.Constants.*;
 
 /**
  * Created by hp on 2015/6/7.
  */
-public class GenericPropertyDefinition implements PropertyDefinition {
+public class DefaultPropertyDefinition implements PropertyDefinition {
     protected SchemaManager manager;
     protected Schema schema;
     protected GenericRecord record;
 
-    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name) {
+    public DefaultPropertyDefinition(SchemaManager manager, String namespace, String name) {
         this(manager,namespace,name,null);
     }
 
-    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, Iterable<String> range) {
+    public DefaultPropertyDefinition(SchemaManager manager, String namespace, String name, Iterable<String> range) {
         this(manager,namespace,name,null,range);
     }
 
-    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, Iterable<String> domain, Iterable<String> range) {
+    public DefaultPropertyDefinition(SchemaManager manager, String namespace, String name, Iterable<String> domain, Iterable<String> range) {
         this(manager,namespace,name, true,true,true,true, domain, range);
     }
 
-    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple) {
+    public DefaultPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple) {
         this(manager,namespace,name, multiple,true,true,true, null, null);
     }
 
-    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable) {
+    public DefaultPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable) {
         this(manager,namespace,name, multiple,sortable,true,true, null, null);
     }
 
-    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable) {
+    public DefaultPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable) {
         this(manager,namespace,name, multiple,sortable,duplicatable,true, null, null);
     }
 
-    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable, boolean labeling) {
+    public DefaultPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable, boolean labeling) {
         this(manager,namespace,name, multiple,sortable,duplicatable,labeling, null, null);
     }
 
-    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable, boolean labeling, Iterable<String> domain, Iterable<String> range) {
+    public DefaultPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable, boolean labeling, Iterable<String> domain, Iterable<String> range) {
         checkNotNull(name);
         this.manager = manager;
         record = new GenericRecordBuilder(SCHEMA_PROPERTY_DEFINITION)
@@ -65,7 +66,7 @@ public class GenericPropertyDefinition implements PropertyDefinition {
                 .build();
     }
 
-    public GenericPropertyDefinition(SchemaManager manager, GenericRecord record) {
+    public DefaultPropertyDefinition(SchemaManager manager, GenericRecord record) {
         this.manager = manager;
         this.record = record;
     }
@@ -235,15 +236,15 @@ public class GenericPropertyDefinition implements PropertyDefinition {
             if(range() == null)
                 types.addAll(manager.genericRecognizedTypes());
             else
-                range().forEach(t -> types.add(manager.getSchema(t)));
+                range().forEach(t -> types.add(manager.getAvroSchema(t)));
             Schema s = types.size() == 1?types.get(1) : Schema.createUnion(types);
             builder.fields();
             if(labeling())
-                builder.fields().name(FIELD_LABEL).type().nullable().array().items().unionOf().stringType().and().map().values().stringType().endUnion().noDefault();
+                builder.fields().name(FIELD_LABELS).type().nullable().map().values().unionOf().nullType().and().stringType().and().array().items().stringType().endUnion().noDefault();
             schema = !labeling() ?builder.fields().name(name()).type(s).noDefault().endRecord():
                     builder.fields()
                             .name(name()).type(s).noDefault()
-                            .name(FIELD_LABEL).type().nullable().array().items().unionOf().stringType().and().map().values().stringType().endUnion().noDefault()
+                            .name(FIELD_LABELS).type().nullable().array().items().unionOf().stringType().and().map().values().stringType().endUnion().noDefault()
                             .endRecord();
         }
         return schema;
@@ -253,16 +254,6 @@ public class GenericPropertyDefinition implements PropertyDefinition {
     public GenericRecord asAvroRecord() {
         return record;
     }
-
-    public static final String FIELD_NAME = "name";
-    public static final String FIELD_NAMESPACE = "namespace";
-    public static final String FIELD_MULTIPLE = "multiple";
-    public static final String FIELD_SORTABLE = "sortable";
-    public static final String FIELD_DUPLICATABLE = "duplicatable";
-    public static final String FIELD_LABELING = "labeling";
-    public static final String FIELD_DOMAIN = "domain";
-    public static final String FIELD_RANGE = "range";
-    public static final String FIELD_LABEL = "label";
 
     public static final Schema SCHEMA_PROPERTY_DEFINITION;
     static {

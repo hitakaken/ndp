@@ -2,6 +2,7 @@ package com.novbank.ndp.core.schema.define;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -13,6 +14,13 @@ import java.util.List;
  * Created by CaoKe on 2015/6/6.
  */
 public interface PropertyDefinition {
+    /**
+     * @return 完整属性名
+     */
+    default String fullName() {
+        return StringUtils.isBlank(namespace()) ? name() : namespace()+"."+name();
+    }
+
     /**
      * @return 命名空间
      */
