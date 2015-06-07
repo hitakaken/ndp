@@ -34,6 +34,18 @@ public class GenericPropertyDefinition implements PropertyDefinition {
         this(manager,namespace,name, true,true,true,true, domain, range);
     }
 
+    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple) {
+        this(manager,namespace,name, multiple,true,true,true, null, null);
+    }
+
+    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable) {
+        this(manager,namespace,name, multiple,sortable,true,true, null, null);
+    }
+
+    public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable) {
+        this(manager,namespace,name, multiple,sortable,duplicatable,true, null, null);
+    }
+
     public GenericPropertyDefinition(SchemaManager manager, String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable, boolean labeling) {
         this(manager,namespace,name, multiple,sortable,duplicatable,labeling, null, null);
     }

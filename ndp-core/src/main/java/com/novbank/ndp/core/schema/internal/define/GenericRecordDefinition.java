@@ -6,10 +6,9 @@ import com.novbank.ndp.core.schema.define.Record;
 import com.novbank.ndp.core.schema.define.RecordDefinition;
 import org.apache.avro.Schema;
 import org.apache.avro.SchemaBuilder;
-import org.apache.avro.generic.*;
 import org.apache.avro.generic.GenericRecord;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -32,6 +31,7 @@ public class GenericRecordDefinition implements RecordDefinition{
     public GenericRecordDefinition(SchemaManager manager, GenericRecord record) {
         this.manager = manager;
         this.record = record;
+        record.get(FIELD_PROPERTIES);
     }
 
     @Override
@@ -45,7 +45,67 @@ public class GenericRecordDefinition implements RecordDefinition{
     }
 
     @Override
-    public List<PropertyDefinition> properties() {
+    public Collection<PropertyDefinition> properties() {
+        return properties.values();
+    }
+
+    @Override
+    public boolean hasProperty(String key) {
+        return properties.containsKey(key);
+    }
+
+    @Override
+    public PropertyDefinition property(String key) {
+        return hasProperty(key)?properties.get(key):null;
+    }
+
+    @Override
+    public RecordDefinition addProperty(PropertyDefinition property) {
+        return null;
+    }
+
+    @Override
+    public RecordDefinition addProperty(String namespace, String name) {
+        return null;
+    }
+
+    @Override
+    public RecordDefinition addProperty(String namespace, String name, Iterable<String> range) {
+        return null;
+    }
+
+    @Override
+    public RecordDefinition addProperty(String namespace, String name, Iterable<String> domain, Iterable<String> range) {
+        return null;
+    }
+
+    @Override
+    public RecordDefinition addProperty(String namespace, String name, boolean multiple) {
+        return null;
+    }
+
+    @Override
+    public RecordDefinition addProperty(String namespace, String name, boolean multiple, boolean sortable) {
+        return null;
+    }
+
+    @Override
+    public RecordDefinition addProperty(String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable) {
+        return null;
+    }
+
+    @Override
+    public RecordDefinition addProperty(String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable, boolean labeling) {
+        return null;
+    }
+
+    @Override
+    public RecordDefinition addProperty(String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable, boolean labeling, Iterable<String> domain, Iterable<String> range) {
+        return null;
+    }
+
+    @Override
+    public RecordDefinition removeProperty(String key) {
         return null;
     }
 
@@ -56,7 +116,7 @@ public class GenericRecordDefinition implements RecordDefinition{
 
     @Override
     public GenericRecord asAvroRecord() {
-        return null;
+        return record;
     }
 
     public static final String FIELD_NAME = "name";
@@ -71,7 +131,7 @@ public class GenericRecordDefinition implements RecordDefinition{
                 .fields()
                 .name(FIELD_NAME).type().stringType().noDefault()
                 .name(FIELD_NAMESPACE).type().stringType().noDefault()
-                .name(FIELD_PROPERTIES).type().array().items(GenericPropertyDefinition.SCHEMA_PROPERTY_DEFINITION).noDefault()
+                .name(FIELD_PROPERTIES).type().map().values(GenericPropertyDefinition.SCHEMA_PROPERTY_DEFINITION).noDefault()
                 .endRecord();
     }
 }

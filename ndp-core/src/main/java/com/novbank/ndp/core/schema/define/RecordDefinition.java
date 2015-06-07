@@ -3,6 +3,7 @@ package com.novbank.ndp.core.schema.define;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public interface RecordDefinition {
     /**
      * @return 属性定义列表
      */
-    List<PropertyDefinition> properties();
+    Collection<PropertyDefinition> properties();
 
     /**
      * @param key 属性名
@@ -39,6 +40,32 @@ public interface RecordDefinition {
      * @return 属性定义
      */
     PropertyDefinition property(String key);
+
+    /**
+     * @param property 待添加属性
+     */
+    RecordDefinition addProperty(PropertyDefinition property);
+
+    RecordDefinition addProperty(String namespace, String name);
+
+    RecordDefinition addProperty(String namespace, String name, Iterable<String> range);
+
+    RecordDefinition addProperty(String namespace, String name, Iterable<String> domain, Iterable<String> range);
+
+    RecordDefinition addProperty(String namespace, String name, boolean multiple);
+
+    RecordDefinition addProperty(String namespace, String name, boolean multiple, boolean sortable);
+
+    RecordDefinition addProperty(String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable);
+
+    RecordDefinition addProperty(String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable, boolean labeling);
+
+    RecordDefinition addProperty(String namespace, String name, boolean multiple, boolean sortable, boolean duplicatable, boolean labeling, Iterable<String> domain, Iterable<String> range);
+
+    /**
+     * @param key 待删除属性名
+     */
+    RecordDefinition removeProperty(String key);
 
     /**
      * @return 映射到Avro Schema对象
