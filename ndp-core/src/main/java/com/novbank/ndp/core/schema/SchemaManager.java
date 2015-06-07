@@ -5,6 +5,7 @@ import org.apache.avro.Schema;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Schema管理器
@@ -13,11 +14,11 @@ import java.io.InputStream;
  * Created by hp on 2015/6/5.
  */
 public interface SchemaManager {
+    List<Schema> genericRecognizedTypes();
+
     void addSchema(String fullName, Schema schema) throws IllegalArgumentException;
 
     void removeSchema(String fullName);
-
-    Schema getSchema(String fullName);
 
     Schema parseSchema(String schemaString);
 
@@ -34,6 +35,8 @@ public interface SchemaManager {
     Iterable<Schema> getPropertiesByDomain(String domain);
 
     Schema getPropertyStyleSchema(String fullName);
+
+    Schema getSchema(String fullName);
 
     void parseSchema(Class pojoClass);
 
