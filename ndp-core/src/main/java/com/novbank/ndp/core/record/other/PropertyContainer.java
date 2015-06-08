@@ -1,4 +1,4 @@
-package com.novbank.ndp.core.record;
+package com.novbank.ndp.core.record.other;
 
 import com.novbank.ndp.core.util.iterator.IteratorUtils;
 

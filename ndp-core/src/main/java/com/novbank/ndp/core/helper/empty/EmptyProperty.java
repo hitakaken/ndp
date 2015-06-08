@@ -1,8 +1,8 @@
 package com.novbank.ndp.core.helper.empty;
 
 import com.novbank.ndp.core.Constants;
-import com.novbank.ndp.core.record.Property;
-import com.novbank.ndp.core.record.PropertyContainer;
+import com.novbank.ndp.core.record.other.Property;
+import com.novbank.ndp.core.record.other.PropertyContainer;
 
 import java.util.NoSuchElementException;
 

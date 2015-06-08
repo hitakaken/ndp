@@ -1,10 +1,10 @@
-package com.novbank.ndp.core.schema.internal.define;
+package com.novbank.ndp.core.record.internal;
 
 import com.google.common.collect.Maps;
 import com.novbank.ndp.core.schema.SchemaManager;
-import com.novbank.ndp.core.schema.define.PropertyDefinition;
-import com.novbank.ndp.core.schema.define.Record;
-import com.novbank.ndp.core.schema.define.RecordDefinition;
+import com.novbank.ndp.core.schema.PropertyDefinition;
+import com.novbank.ndp.core.record.Record;
+import com.novbank.ndp.core.schema.RecordDefinition;
 import org.apache.avro.Schema;
 import org.apache.avro.SchemaBuilder;
 import org.apache.avro.generic.GenericRecord;

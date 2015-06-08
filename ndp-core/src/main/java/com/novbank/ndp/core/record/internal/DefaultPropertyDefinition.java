@@ -1,9 +1,9 @@
-package com.novbank.ndp.core.schema.internal.define;
+package com.novbank.ndp.core.record.internal;
 
 import com.google.common.collect.Lists;
 import com.novbank.ndp.core.schema.SchemaManager;
-import com.novbank.ndp.core.schema.define.Property;
-import com.novbank.ndp.core.schema.define.PropertyDefinition;
+import com.novbank.ndp.core.record.Property;
+import com.novbank.ndp.core.schema.PropertyDefinition;
 import org.apache.avro.Schema;
 import org.apache.avro.SchemaBuilder;
 import org.apache.avro.generic.GenericRecord;

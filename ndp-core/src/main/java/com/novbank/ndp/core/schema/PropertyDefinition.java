@@ -1,10 +1,11 @@
-package com.novbank.ndp.core.schema.define;
+package com.novbank.ndp.core.schema;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
+
+import static com.novbank.ndp.core.util.NamespaceUtils.getFullName;
 
 /**
  * 对象属性定义
@@ -18,7 +19,7 @@ public interface PropertyDefinition {
      * @return 完整属性名
      */
     default String fullName() {
-        return StringUtils.isBlank(namespace()) ? name() : namespace()+"."+name();
+        return getFullName(namespace(),name());
     }
 
     /**

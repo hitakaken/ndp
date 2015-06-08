@@ -11,10 +11,13 @@ import org.apache.commons.validator.routines.UrlValidator;
 import org.javatuples.Triplet;
 import org.jooq.lambda.Seq;
 
+import javax.xml.namespace.NamespaceContext;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by hp on 2015/6/5.
@@ -132,7 +135,7 @@ public class DefaultNamespaceManager implements NamespaceManager {
     protected boolean validateSpace(String space){
         return (StringUtils.indexOf(space,'.') > 0
                 && StringUtils.lastIndexOf(space,'.') < StringUtils.length(space) -2
-                && StringUtils.containsOnly(Constants.LOWERCASE + Constants.UPPERCASE + Constants.DIGITS + "._"));
+                && StringUtils.containsOnly(Constants.CHARACTER_VALID_NAMESPACE));
     }
 
     /**
@@ -148,7 +151,7 @@ public class DefaultNamespaceManager implements NamespaceManager {
      * @return 合法返回 true, 非法返回 false
      */
     protected boolean validateAbbreviation(String abbreviation){
-        return StringUtils.containsOnly(Constants.LOWERCASE + Constants.UPPERCASE + Constants.DIGITS  + ":_");
+        return StringUtils.containsOnly(Constants.CHARACTER_VALID_ABBREVIATION);
     }
 
     protected void registerSpace(String space){
@@ -411,6 +414,26 @@ public class DefaultNamespaceManager implements NamespaceManager {
     @Override
     public Iterator<Triplet<String, String, String>> iterator() {
         return namespaces.iterator();
+    }
+
+    @Override
+    public String getNamespaceURI(String prefix) {
+        return findUrlByAbbreviation(prefix);
+    }
+
+    @Override
+    public String getPrefix(String namespaceURI) {
+        checkNotNull(namespaceURI);
+        for(String prefix : findAbbreviationsByUrl(namespaceURI))
+            if(StringUtils.isNotBlank(prefix))
+                return prefix;
+        return StringUtils.EMPTY;
+    }
+
+    @Override
+    public Iterator getPrefixes(String namespaceURI) {
+        checkNotNull(namespaceURI);
+        return findAbbreviationsByUrl(namespaceURI).iterator();
     }
 
     public static class Exceptions {

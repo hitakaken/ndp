@@ -1,4 +1,6 @@
-package com.novbank.ndp.core.schema.define;
+package com.novbank.ndp.core.handler;
+
+import com.novbank.ndp.core.record.Record;
 
 import javax.validation.Validator;
 import java.util.Map;

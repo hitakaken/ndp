@@ -2,6 +2,7 @@ package com.novbank.ndp.core.schema;
 
 import org.javatuples.Triplet;
 
+import javax.xml.namespace.NamespaceContext;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
  *
  * Created by hp on 2015/6/5.
  */
-public interface NamespaceManager extends Iterable<Triplet<String,String,String>>{
+public interface NamespaceManager extends Iterable<Triplet<String,String,String>>,NamespaceContext {
     /**
      * @param space     命名空间
      * @param url       RDF url

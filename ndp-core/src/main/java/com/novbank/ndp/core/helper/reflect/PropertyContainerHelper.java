@@ -1,8 +1,7 @@
 package com.novbank.ndp.core.helper.reflect;
 
 import com.google.common.collect.Maps;
-import com.novbank.ndp.core.record.PropertyContainer;
-import javassist.util.proxy.ProxyFactory;
+import com.novbank.ndp.core.record.other.PropertyContainer;
 
 import java.lang.reflect.Method;
 import java.util.Map;

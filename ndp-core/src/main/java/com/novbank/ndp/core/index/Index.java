@@ -1,6 +1,6 @@
 package com.novbank.ndp.core.index;
 
-import com.novbank.ndp.core.record.PropertyContainer;
+import com.novbank.ndp.core.record.other.PropertyContainer;
 
 /**
  * Created by hp on 2015/6/1.

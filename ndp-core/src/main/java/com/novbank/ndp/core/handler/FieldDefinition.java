@@ -1,4 +1,6 @@
-package com.novbank.ndp.core.schema.define;
+package com.novbank.ndp.core.handler;
+
+import com.novbank.ndp.core.record.Property;
 
 import javax.validation.ConstraintViolation;
 import java.util.Set;

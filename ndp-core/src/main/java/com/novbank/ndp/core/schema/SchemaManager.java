@@ -1,12 +1,7 @@
 package com.novbank.ndp.core.schema;
 
-import com.novbank.ndp.core.schema.define.PropertyDefinition;
-import com.novbank.ndp.core.schema.define.RecordDefinition;
 import org.apache.avro.Schema;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -52,14 +47,31 @@ public interface SchemaManager {
     /**
      * @param namespace 命名空间
      * @param name 属性名
-     * @return 是否包含符合条件的全局属性（RDF）
+     * @return 是否包含符合条件的属性（全局/私有）
      */
-    boolean hasPropertyDefinition(String namespace, String name);
+    default boolean hasPropertyDefinition(String namespace, String name){
+        return hasGlobePropertyDefinition(namespace,name) || hasPrivatePropertyDefinition(namespace,name);
+    }
 
     /**
      * @param namespace 命名空间
      * @param name 属性名
-     * @return 获取符合条件的全局属性（RDF）
+     * @return 是否包含符合条件的属性（全局）
+     */
+    boolean hasGlobePropertyDefinition(String namespace, String name);
+
+    /**
+     *
+     * @param fullName 记录类型名称
+     * @param name  属性名
+     * @return 是否包含符合条件的属性（全局）
+     */
+    boolean hasPrivatePropertyDefinition(String fullName, String name);
+
+    /**
+     * @param namespace 命名空间
+     * @param name 属性名
+     * @return 获取符合条件的全局属性（RDF）/ 或者新建属性
      */
     PropertyDefinition getOrCreatePropertyDefinition(String namespace, String name);
 

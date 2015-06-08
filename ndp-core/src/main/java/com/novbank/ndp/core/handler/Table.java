@@ -1,4 +1,4 @@
-package com.novbank.ndp.core.schema.define;
+package com.novbank.ndp.core.handler;
 
 import java.util.List;
 

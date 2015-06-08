@@ -1,4 +1,4 @@
-package com.novbank.ndp.core.record;
+package com.novbank.ndp.core.record.other;
 
 import java.beans.*;
 import java.util.Objects;

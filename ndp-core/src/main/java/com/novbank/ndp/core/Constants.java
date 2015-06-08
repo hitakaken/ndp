@@ -1,9 +1,6 @@
 package com.novbank.ndp.core;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by hp on 2015/6/1.
@@ -25,12 +22,24 @@ public class Constants {
 
     public static final String EMPTY_PROPERTY = "p[empty]";
 
-    public static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+    /**
+     * 字符集常量
+     */
+    public static final String CHARACTER_LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+    public static final String CHARACTER_UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public static final String CHARACTER_DIGITS = "0123456789";
+    public static final String SEPARATOR_PERIOD = ".";
+    public static final String SEPARATOR_UNDERSCORE = "_";
+    public static final String SEPARATOR_ABBREVIATION = ":";
+    public static final String SEPARATOR_PATH = "/";
+    public static final String SEPARATOR_LINE = System.lineSeparator();
+    public static final String CHARACTER_VALID_COMMON = CHARACTER_LOWERCASE + CHARACTER_UPPERCASE +CHARACTER_DIGITS;
+    public static final String CHARACTER_VALID_ABBREVIATION = CHARACTER_VALID_COMMON + SEPARATOR_UNDERSCORE + SEPARATOR_ABBREVIATION;
+    public static final String CHARACTER_VALID_NAMESPACE = CHARACTER_VALID_COMMON + SEPARATOR_UNDERSCORE + SEPARATOR_PERIOD;
 
-    public static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    public static final String DIGITS = "0123456789";
-
+    /**
+     * 字段名常量
+     */
     public static final String FIELD_NAME = "name";
     public static final String FIELD_NAMESPACE = "namespace";
     public static final String FIELD_MULTIPLE = "multiple";
@@ -43,4 +52,7 @@ public class Constants {
     public static final String FIELD_PROPERTIES = "properties";
     public static final String FIELD_EXTENSION = "ext";
 
+
+    public static final TimeZone GMT_TIME_ZONE = TimeZone.getTimeZone("GMT");
+    public static final Calendar UNIX_EPOCH = Calendar.getInstance(GMT_TIME_ZONE);
 }

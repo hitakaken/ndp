@@ -1,11 +1,12 @@
-package com.novbank.ndp.core.schema.internal.define;
+package com.novbank.ndp.core.record.internal;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.novbank.ndp.core.schema.define.Property;
-import com.novbank.ndp.core.schema.define.PropertyDefinition;
-import com.novbank.ndp.core.schema.define.Record;
+import com.novbank.ndp.core.record.Property;
+import com.novbank.ndp.core.schema.PropertyDefinition;
+import com.novbank.ndp.core.record.Record;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.avro.generic.GenericRecordBuilder;
 
 import java.util.Collection;
 import java.util.Map;
@@ -20,6 +21,10 @@ public class DefaultProperty implements Property {
     protected Record record;
     protected PropertyDefinition definition;
     protected GenericRecord avroRecord;
+
+    public DefaultProperty(Record record, PropertyDefinition definition){
+        this(record,definition, new GenericRecordBuilder(definition.asAvroSchema()).build());
+    }
 
     public DefaultProperty(Record record, PropertyDefinition definition, GenericRecord avroRecord) {
         this.record = record;

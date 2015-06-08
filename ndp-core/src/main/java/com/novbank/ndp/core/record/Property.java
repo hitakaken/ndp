@@ -1,86 +1,59 @@
 package com.novbank.ndp.core.record;
 
-import com.novbank.ndp.core.helper.empty.EmptyProperty;
+import com.novbank.ndp.core.schema.PropertyDefinition;
+import org.apache.avro.generic.GenericRecord;
 
-import java.util.NoSuchElementException;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.Map;
 
 /**
- * Created by hp on 2015/6/1.
+ * Created by hp on 2015/6/7.
  */
-public interface Property<V> {
-    String key();
-
-    V value() throws NoSuchElementException;
-
-    boolean isPresent();
-
-    default void ifPresent(final Consumer<? super V> consumer){
-        if (this.isPresent())
-            consumer.accept(this.value());
-    }
-
-    default V orElse(final V otherValue){
-        return this.isPresent() ? this.value() : otherValue;
-    }
-
-    default V orElseGet(final Supplier<? extends V> valueSupplier){
-        return this.isPresent() ? this.value() : valueSupplier.get();
-    }
-
-    default <E extends Throwable> V orElseThrow(final Supplier<? extends E> exceptionSupplier) throws E{
-        if (this.isPresent()) return this.value();
-        else
-            throw exceptionSupplier.get();
-    }
-
-    PropertyContainer container();
-
-    void remove();
-
-    static <V> Property<V> empty() {
-        return EmptyProperty.instance();
-    }
+public interface Property {
+    /**
+     * @return 属性定义
+     */
+    PropertyDefinition definition();
 
     /**
-     * Common exceptions to use with a property.
+     * @return 命名空间
      */
-    class Exceptions {
+    default String namespace(){ return definition().namespace();};
 
-        private Exceptions() {
-        }
+    /**
+     * @return 属性名
+     */
+    default String name(){ return definition().name();};
 
-        public static IllegalArgumentException propertyKeyCanNotBeEmpty() {
-            return new IllegalArgumentException("Property key can not be the empty string");
-        }
+    /**
+     * @return 所属记录
+     */
+    Record record();
 
-        public static IllegalArgumentException propertyKeyCanNotBeNull() {
-            return new IllegalArgumentException("Property key can not be null");
-        }
+    /**
+     * @return 属性值
+     */
+    Object value();
 
-        public static IllegalArgumentException propertyValueCanNotBeNull() {
-            return new IllegalArgumentException("Property value can not be null");
-        }
+    /**
+     * @param value 属性值
+     * @return 链式属性
+     */
+    Property value(Object value);
 
-        public static IllegalArgumentException propertyKeyCanNotBeAHiddenKey(final String key) {
-            return new IllegalArgumentException("Property key can not be a hidden key: " + key);
-        }
+    /**
+     * @return 标签
+     */
+    Map<String, Object> labels();
 
-        public static IllegalStateException propertyDoesNotExist() {
-            return new IllegalStateException("The property does not exist as it has no key, value, or associated element");
-        }
+    /**
+     * @param key 标签 Key
+     * @param value 标签 Value
+     * @return 链式属性
+     */
+    Property addLabel(String key, String value);
 
-        public static IllegalStateException propertyDoesNotExist(final PropertyContainer element, final String key) {
-            return new IllegalStateException("The property does not exist as the key has no associated value for the provided element: " + element + ":" + key);
-        }
-
-        public static IllegalArgumentException dataTypeOfPropertyValueNotSupported(final Object val) {
-            return new IllegalArgumentException(String.format("Property value [%s] is of type %s is not supported", val, val.getClass()));
-        }
-
-        public static IllegalStateException propertyRemovalNotSupported() {
-            return new IllegalStateException("Property removal is not supported");
-        }
-    }
+    /**
+     * @return 映射到 Avro Record
+     */
+    GenericRecord asAvroRecord();
 }

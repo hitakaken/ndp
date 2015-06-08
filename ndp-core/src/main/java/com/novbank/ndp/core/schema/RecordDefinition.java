@@ -1,11 +1,11 @@
-package com.novbank.ndp.core.schema.define;
+package com.novbank.ndp.core.schema;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
-import java.util.List;
+
+import static com.novbank.ndp.core.util.NamespaceUtils.getFullName;
 
 /**
  * 记录定义
@@ -19,7 +19,7 @@ public interface RecordDefinition {
      * @return 完整记录类型名称
      */
     default String fullName() {
-        return StringUtils.isBlank(namespace()) ? name() : namespace()+"."+name();
+        return getFullName(namespace(),name());
     }
 
     /**
