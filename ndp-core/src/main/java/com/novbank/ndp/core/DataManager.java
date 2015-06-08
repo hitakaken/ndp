@@ -21,4 +21,8 @@ public interface DataManager extends Injector {
      * @return Schema管理器
      */
     SchemaManager schemas();
+
+    DataManager load();
+
+    DataManager reload();
 }
