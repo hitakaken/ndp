@@ -3,35 +3,47 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.novbank.ndp</groupId>
         <artifactId>ndp</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ndp-bom</artifactId>
-    <name>NovBank Data Platform :: BOM</name>
-    <description>A BOM for including NovBank Data Platform dependencies in other applications.</description>
+    <groupId>com.novbank.ndp.dataformat</groupId>
+    <artifactId>ndp-dataformat</artifactId>
+    <name>NovBank Data Platform :: Data Format </name>
+    <description>NovBank Data Platform Data Format Module, containing utilities for other data format working with NovBank Data Platform</description>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>ndp-dataformat-excel</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.novbank.ndp</groupId>
-                <artifactId>ndp-core</artifactId>
+                <artifactId>ndp-bom</artifactId>
                 <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>com.novbank.ndp</groupId>
-                <artifactId>ndp-kernel</artifactId>
+                <artifactId>ndp-commons-bom</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.novbank.ndp</groupId>
-                <artifactId>ndp-metrics</artifactId>
-                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.novbank.ndp</groupId>
+            <artifactId>ndp-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>
