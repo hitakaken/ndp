@@ -1,8 +1,5 @@
 package com.novbank.ndp.core;
 
-import com.google.inject.Injector;
-import com.novbank.ndp.core.extension.Extension;
-import com.novbank.ndp.core.extension.ExtensionManager;
 import com.novbank.ndp.core.schema.NamespaceManager;
 import com.novbank.ndp.core.schema.SchemaManager;
 
@@ -11,7 +8,7 @@ import com.novbank.ndp.core.schema.SchemaManager;
  *
  * Created by hp on 2015/6/8.
  */
-public interface DataManager extends Injector {
+public interface DataManager {
     /**
      * @return 命名空间管理器
      */
@@ -22,7 +19,4 @@ public interface DataManager extends Injector {
      */
     SchemaManager schemas();
 
-    DataManager load();
-
-    DataManager reload();
 }

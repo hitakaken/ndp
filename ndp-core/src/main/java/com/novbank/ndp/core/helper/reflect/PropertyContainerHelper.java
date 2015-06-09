@@ -6,8 +6,6 @@ import com.novbank.ndp.core.record.other.PropertyContainer;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 /**
  * Created by hp on 2015/6/1.
  */

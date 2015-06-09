@@ -1,7 +1,9 @@
 package com.novbank.ndp.core.schema;
 
 import org.apache.avro.Schema;
+import org.apache.avro.generic.GenericRecord;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -37,68 +39,17 @@ public interface SchemaManager {
      */
     SchemaManager addAvroSchema(String namespace, String name, Schema schema);
 
-    /**
-     * @param fullName
-     * @param schema
-     * @return 链式管理器
-     */
     SchemaManager addAvroSchema(String fullName, Schema schema);
 
     /**
-     * @param namespace 命名空间
-     * @param name 属性名
-     * @return 是否包含符合条件的属性（全局/私有）
-     */
-    default boolean hasPropertyDefinition(String namespace, String name){
-        return hasGlobePropertyDefinition(namespace,name) || hasPrivatePropertyDefinition(namespace,name);
-    }
-
-    /**
-     * @param namespace 命名空间
-     * @param name 属性名
-     * @return 是否包含符合条件的属性（全局）
-     */
-    boolean hasGlobePropertyDefinition(String namespace, String name);
-
-    /**
-     *
-     * @param fullName 记录类型名称
-     * @param name  属性名
-     * @return 是否包含符合条件的属性（全局）
-     */
-    boolean hasPrivatePropertyDefinition(String fullName, String name);
-
-    /**
-     * @param namespace 命名空间
-     * @param name 属性名
-     * @return 获取符合条件的全局属性（RDF）/ 或者新建属性
-     */
-    PropertyDefinition getOrCreatePropertyDefinition(String namespace, String name);
-
-    /**
-     * @param propertyDefinition
+     * @param schema
      * @return 链式管理器
      */
-    SchemaManager addPropertyDefinition(PropertyDefinition propertyDefinition);
+    SchemaManager register(Schema schema);
 
-    /**
-     * @param fullName 记录类型全名
-     * @return 记录定义
-     */
-    RecordDefinition getOrCreateRecordDefinition(String fullName);
+    <P> SchemaManager register(Class<P> pojoClass) throws IOException;
 
-    /**
-     * @param namespace 命名空间
-     * @param name 记录名称
-     * @return 记录定义
-     */
-    RecordDefinition getOrCreateRecordDefinition(String namespace, String name);
+    SchemaManager register(Package pojoPackage);
 
-    /**
-     * @param recordDefinition
-     * @return 链式管理器
-     */
-    SchemaManager addRecordDefinition(RecordDefinition recordDefinition);
-
-
+    GenericRecord toAvroRecord(Object pojo);
 }

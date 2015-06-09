@@ -1,6 +1,5 @@
 package com.novbank.ndp.core.handler;
 
-import com.novbank.ndp.core.record.Property;
 
 import javax.validation.ConstraintViolation;
 import java.util.Set;
@@ -36,5 +35,5 @@ public interface FieldDefinition {
     /**
      * @return 处理器，对象->属性
      */
-    Function<Object,Property> handler();
+    /*Function<Object,Property> handler();*/
 }

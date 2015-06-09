@@ -1,6 +1,7 @@
 package com.novbank.ndp.core.handler;
 
-import com.novbank.ndp.core.record.Record;
+
+import org.apache.avro.generic.GenericData;
 
 import javax.validation.Validator;
 import java.util.Map;
@@ -27,5 +28,5 @@ public interface RowDefinition {
     /**
      * @return 处理器，字符串->属性
      */
-    Function<Map<String,Object>, Record> handler();
+    Function<Map<String,Object>, GenericData.Record> handler();
 }

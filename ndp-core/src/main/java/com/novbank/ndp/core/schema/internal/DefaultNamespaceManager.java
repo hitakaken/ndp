@@ -11,7 +11,6 @@ import org.apache.commons.validator.routines.UrlValidator;
 import org.javatuples.Triplet;
 import org.jooq.lambda.Seq;
 
-import javax.xml.namespace.NamespaceContext;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;

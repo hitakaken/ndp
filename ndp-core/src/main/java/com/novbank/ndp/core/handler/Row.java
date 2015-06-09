@@ -1,6 +1,5 @@
 package com.novbank.ndp.core.handler;
 
-import com.novbank.ndp.core.record.Record;
 
 import java.util.List;
 import java.util.Map;
@@ -26,11 +25,11 @@ public interface Row {
     /**
      * @return 转换为记录
      */
-    Record toRecord();
+    /*Record toRecord();*/
 
     /**
      * @param filter 过滤器
      * @return
      */
-    Record toRecord(Predicate<Map.Entry<String,Object>> filter);
+    /*Record toRecord(Predicate<Map.Entry<String,Object>> filter);*/
 }

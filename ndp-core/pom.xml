@@ -65,6 +65,16 @@
             <artifactId>guice</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-servlet</artifactId>
+            <version>${google.guice.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-assistedinject</artifactId>
+            <version>${google.guice.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.javatuples</groupId>
             <artifactId>javatuples</artifactId>
         </dependency>
@@ -107,6 +117,20 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>${javax.validation.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kitesdk</groupId>
+            <artifactId>kite-data-core</artifactId>
+            <version>${kite.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kitesdk</groupId>
+            <artifactId>kite-hadoop-cdh5-dependencies</artifactId>
+            <version>${kite.version}</version>
+            <type>pom</type>
+            <scope>compile</scope> <!-- provide Hadoop dependencies -->
         </dependency>
     </dependencies>
     

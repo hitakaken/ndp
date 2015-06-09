@@ -1,6 +1,8 @@
 package com.novbank.ndp.core.record.other;
 
-import java.beans.*;
+import java.beans.PropertyChangeSupport;
+import java.beans.PropertyVetoException;
+import java.beans.VetoableChangeSupport;
 import java.util.Objects;
 import java.util.function.BiConsumer;
 
